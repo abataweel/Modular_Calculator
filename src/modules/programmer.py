@@ -1,10 +1,9 @@
+from validations.validators import *
 """
 Programmer Calculator Module
 Handles base conversions and bitwise operations
 
 """
-
-
 
 def programmer_menu():
 
