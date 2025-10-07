@@ -1,4 +1,4 @@
-from validations.validators import *
+#from validations.validators import *
 """
 Programmer Calculator Module
 Handles base conversions and bitwise operations
@@ -20,8 +20,7 @@ def programmer_menu():
             print("="*30)
             choice = int(input("Select an option (1-3): "))
             if choice == 1:
-                value1=base_conversions_menu()
-                print(value1)
+                base_conversions_menu()
                 break
             elif choice == 2:
                 value2=bitwise_operations_menu()
@@ -63,7 +62,7 @@ def base_conversions_menu():
                 print(value)
                 break
             elif choice == 3:
-                hexadecimal_to_others_menu()
+                return hexadecimal_to_others_menu()
             elif choice == 4:
                 value=octal_to_others_menu()
                 print(value)
@@ -152,6 +151,8 @@ def decimal_to_others_menu():
         except KeyboardInterrupt:
             print("Exiting to Base Conversion Menu.")
             return
+
+
 def octal_to_Decimal():
     octal_number = input('Enter your octal number ')
     octal_number = str(octal_number)
@@ -177,7 +178,7 @@ def octal_to_Decimal():
         return
 
 def octal_to_others_menu():
-    '''Converts Octal to Decimal,Binary and Hexadecimal'''
+    #Converts Octal to Decimal,Binary and Hexadecimal
     print("="*30)
     print("1. Octal to Decimal")
     print("2. Octal to Hexadecimal")
@@ -205,7 +206,66 @@ def octal_to_others_menu():
             continue
         except KeyboardInterrupt:
              print("Exiting to Base Conversion Menu.")
-             return
-    return       
+             return     
+
+def hexChar_To_Decimal(ch):
+    if 'A' <= ch <= 'F': # Check if it's a number between A-F or 0-9
+        return 10 + (ord(ch) - ord('A'))
+    else:
+        return ord(ch) - ord('0')
+
+def hexadecimal_to_decimal():
+    """Convert a hexadecimal string to a decimal integer."""
+    try:
+        hex_string = input("Enter a hexadecimal number: ").upper()
+        decimalValue = 0
+        hex_string = hex_string[::-1]  # Reverse the string to process numbers correctly
+        
+        for i in range(len(hex_string)):
+            ch = hex_string[i]
+            if 'A' <= ch <= 'F' or '0' <= ch <= '9': # Check if it's a valid hex character
+                decimalValue += 16**i*hexChar_To_Decimal(ch) # transform hex to decimal by taking the sum of
+            else:                                            #  16**i * value of char at index i
+                raise ValueError() # flag invalid hexadecimal character
+
+        return print('Hexadecimal:',decimalValue)
+    except ValueError:
+        print("Invalid hexadecimal number, hexadecimal numbers go from 0-9,a-f.")
+        return
+    except KeyboardInterrupt:
+        print("Exiting to Base Conversion Menu.")
+        return
+
+def hexadecimal_to_others_menu():
+    # Display the hexadecimal to others conversion menu
+    print("Hexadecimal to Others Conversion Menu")
+    print("1. Hexadecimal to Decimal")
+    print("2. Hexadecimal to Binary")
+    print("3. Hexadecimal to Octal")
+    print("4. Back to Main Menu")
+    while True:
+        try:
+            print('=' * 30)
+            choice = int(input("Select an option (1-4): "))
+            if choice==1:
+                return hexadecimal_to_decimal()
+                
+
+            elif choice==2:
+                return
+
+            elif choice==3:
+                return
+
+            elif choice==4:
+                print("Returning to Base Conversion Menu...")
+                break
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 4.")
+            continue
+        except KeyboardInterrupt:
+             print("Exiting to Base Conversion Menu.")
+             return      
+
 programmer_menu()
 
