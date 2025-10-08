@@ -1,4 +1,4 @@
-# Modular_Calculator
+# Modular Calculator Project
 ## EE202-Team B
 
 ### Contributers:
