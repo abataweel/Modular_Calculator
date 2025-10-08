@@ -1,7 +1,7 @@
 # Modular_Calculator
-EE202-team B
+## EE202-Team B
 
-##Contributers:
+### Contributers:
 
 1-Ahmed Bataweel
 
