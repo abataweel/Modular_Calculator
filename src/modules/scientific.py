@@ -36,7 +36,7 @@ def main() :
    print(loge(q,a,b))
 
 
-def factorial(n) :
+def factorial_function(n) :
     return factorial(n) 
 
 def loge(*x) :
@@ -47,7 +47,7 @@ def loge(*x) :
     elif exorlog == 'log' :
      hart = x[1] 
      base = x[2]
-     if hart >0 and base >0  :
+     if hart >0 and base >0 and base !=1 :
       return log(hart, base)  
 def hyperbolic(hyperbolic_function) : 
     value = eval(input('Enter value: '))
