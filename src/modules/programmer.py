@@ -6,7 +6,7 @@ Handles base conversions and bitwise operations
 """
 
 def programmer_menu():
-
+ 
     """Main menu for programmer calculator mode"""
     print("="*30)
     print("Programmer Calculator Mode")
@@ -269,3 +269,4 @@ def hexadecimal_to_others_menu():
 
 programmer_menu()
 
+ 
