@@ -58,9 +58,7 @@ def base_conversions_menu():
             if choice == 1:
                 binary_to_others_menu()
             elif choice == 2:
-                value = decimal_to_others_menu()
-                print(value)
-                break
+                return decimal_to_others_menu()
             elif choice == 3:
                 return hexadecimal_to_others_menu()
             elif choice == 4:
@@ -75,9 +73,58 @@ def base_conversions_menu():
             return
         break
     
-            
+def decimal_to_binary(decimalNumberUser):
+    """Convert decimal to binary"""  
+    decimalNumber=abs(decimalNumberUser)
+    if decimalNumber == 0:
+        return "0"
+    result=""
+    while decimalNumber > 0:
+        """
+        Example => Decimal 13
+        13 / 2 = 6 remainder 1
+        6 / 2 = 3 remainder 0
+        3 / 2 = 1 remainder 1
+        1 / 2 = 0 remainder 1
+        Result = 1101
+        """
+        remainder = decimalNumber % 2 # Get Remainder 0 or 1
+        result += str(remainder) # Append Remainder to Result String
+        decimalNumber = decimalNumber // 2 # Refresh Decimal Number by Floor Division
+    result = result[::-1] # Reverse the Result List to get the correct order
+    return result
 
+def decimal_to_hexadecimal(decimalNumberUser):
+    """Convert decimal to hexadecimal"""
+    try:
+        decimalNumber=abs(decimalNumberUser)
 
+        if decimalNumber == 0:
+            return "0"
+                
+        result=""
+        hex_chars = "0123456789ABCDEF"  # Hexadecimal characters
+        while decimalNumber > 0:
+            """
+            Example => Decimal 254
+            254 / 16 = 15 remainder 14 (E)
+            15 / 16 = 0 remainder 15 (F)
+            Result = FE
+            """
+            remainder = decimalNumber % 16 # Get Remainder between 0-15
+            result += hex_chars[remainder] # Append Corresponding Hex Character to Result String
+            decimalNumber = decimalNumber // 16 # Refresh Decimal Number by Floor Division
+        result = result[::-1] # Reverse the Result to get the correct order
+        return result
+    except ValueError:
+        print("Invalid input. Please enter a valid decimal number.")
+        return
+    except KeyboardInterrupt:
+        print("Exiting to Base Conversion Menu.")
+        return
+    except TypeError:
+        print("Invalid input. Please enter a valid decimal number.")
+        return
 
 def decimal_to_others_menu():
     """ Converts Decimal to Binary, Hexadecimal, and Octal """
@@ -91,52 +138,13 @@ def decimal_to_others_menu():
             print("="*30)
             choice=int(input("Select an option (1-4): "))
             if choice == 1:
-                decimalNumberUser=int(input("Enter a Decimal number: "))  
-                decimalNumber=abs(decimalNumberUser)
-
-                if decimalNumber == 0:
-                    return "0"
-                
-                result=""
-
-                while decimalNumber > 0:
-                    """
-                    Example => Decimal 13
-                    13 / 2 = 6 remainder 1
-                    6 / 2 = 3 remainder 0
-                    3 / 2 = 1 remainder 1
-                    1 / 2 = 0 remainder 1
-                    Result = 1101
-                    """
-                    remainder = decimalNumber % 2 # Get Remainder 0 or 1
-                    result += str(remainder) # Append Remainder to Result String
-                    decimalNumber = decimalNumber // 2 # Refresh Decimal Number by Floor Division
-                result = result[::-1] # Reverse the Result List to get the correct order
-                return result
+                decimalNumberUser=int(input("Enter a Decimal number: "))
+                return print("Binary:",decimal_to_binary(decimalNumberUser))
             
             elif choice == 2:
                 """Convert decimal to hexadecimal"""
                 decimalNumberUser=int(input("Enter a Decimal number: "))
-                decimalNumber=abs(decimalNumberUser)
-
-                if decimalNumber == 0:
-                    return "0"
-                
-                result=""
-                hex_chars = "0123456789ABCDEF"  # Hexadecimal characters
-
-                while decimalNumber > 0:
-                    """
-                    Example => Decimal 254
-                    254 / 16 = 15 remainder 14 (E)
-                    15 / 16 = 0 remainder 15 (F)
-                    Result = FE
-                    """
-                    remainder = decimalNumber % 16 # Get Remainder between 0-15
-                    result += hex_chars[remainder] # Append Corresponding Hex Character to Result String
-                    decimalNumber = decimalNumber // 16 # Refresh Decimal Number by Floor Division
-                result = result[::-1] # Reverse the Result to get the correct order
-                return result 
+                return print("Hexadecimal:",decimal_to_hexadecimal(decimalNumberUser)) 
             
 
             elif choice == 3:
@@ -151,8 +159,7 @@ def decimal_to_others_menu():
             return
 
 
-def octal_to_Decimal():
-    octal_number = input('Enter your octal number ')
+def octal_to_Decimal(octal_number):
     octal_number = str(octal_number)
     octal_number = octal_number[::-1]
     decimal_number = 0
@@ -187,12 +194,23 @@ def octal_to_others_menu():
             print("="*30)
             choise = int(input(" Select an option (1-4): "))
             if choise==1:
-                return print('Octal:',octal_to_Decimal())
+                octal_number = input('Enter your octal number: ')
+                return print('Octal:',octal_to_Decimal(octal_number))
 
             elif choise==2:
+                octal_number = input('Enter your octal number ')
+                decimal_number=octal_to_Decimal(octal_number)
+                if decimal_number is None:
+                    return
+                print('Hexadecimal:',decimal_to_hexadecimal(decimal_number))
                 return
 
             elif choise==3:
+                octal_number = input('Enter your octal number ')
+                decimal_number=octal_to_Decimal(octal_number)
+                if decimal_number is None:
+                    return
+                print('Binary:',decimal_to_binary(decimal_number))
                 return
 
             elif choise==4:
@@ -211,10 +229,9 @@ def hexChar_To_Decimal(ch):
     else:
         return ord(ch) - ord('0')
 
-def hexadecimal_to_decimal():
+def hexadecimal_to_decimal(hex_string):
     """Convert a hexadecimal string to a decimal integer."""
     try:
-        hex_string = input("Enter a hexadecimal number: ").upper()
         decimalValue = 0
         hex_string = hex_string[::-1]  # Reverse the string to process numbers correctly
         
@@ -225,7 +242,7 @@ def hexadecimal_to_decimal():
             else:                                            #  16**i * value of char at index i
                 raise ValueError() # flag invalid hexadecimal character
 
-        return print('Hexadecimal:',decimalValue)
+        return decimalValue
     except ValueError:
         print("Invalid hexadecimal number, hexadecimal numbers go from 0-9,a-f.")
         return
@@ -234,7 +251,8 @@ def hexadecimal_to_decimal():
         return
 
 def hexadecimal_to_others_menu():
-    # Display the hexadecimal to others conversion menu
+    # Converts Hexadecimal to Binary, Decimal and Octal
+    print("="*30)
     print("Hexadecimal to Others Conversion Menu")
     print("1. Hexadecimal to Decimal")
     print("2. Hexadecimal to Binary")
@@ -245,10 +263,16 @@ def hexadecimal_to_others_menu():
             print('=' * 30)
             choice = int(input("Select an option (1-4): "))
             if choice==1:
-                return print('Hexadecimal:',hexadecimal_to_decimal())
+                hex_string = input("Enter a hexadecimal number: ").upper()
+                return print('Hexadecimal:',hexadecimal_to_decimal(hex_string))
                 
 
             elif choice==2:
+                hex_string = input("Enter a hexadecimal number: ").upper()
+                decimal_number=hexadecimal_to_decimal(hex_string)
+                if decimal_number is None:
+                    return
+                print('Binary:',decimal_to_binary(decimal_number))
                 return
 
             elif choice==3:
