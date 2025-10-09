@@ -64,9 +64,7 @@ def base_conversions_menu():
             elif choice == 3:
                 return hexadecimal_to_others_menu()
             elif choice == 4:
-                value=octal_to_others_menu()
-                print(value)
-                break
+                return octal_to_others_menu()
             elif choice == 5:
                 return
         except ValueError:
@@ -189,8 +187,7 @@ def octal_to_others_menu():
             print("="*30)
             choise = int(input(" Select an option (1-4): "))
             if choise==1:
-                return octal_to_Decimal()
-                
+                return print('Octal:',octal_to_Decimal())
 
             elif choise==2:
                 return
@@ -248,7 +245,7 @@ def hexadecimal_to_others_menu():
             print('=' * 30)
             choice = int(input("Select an option (1-4): "))
             if choice==1:
-                return hexadecimal_to_decimal()
+                return print('Hexadecimal:',hexadecimal_to_decimal())
                 
 
             elif choice==2:
@@ -266,6 +263,57 @@ def hexadecimal_to_others_menu():
         except KeyboardInterrupt:
              print("Exiting to Base Conversion Menu.")
              return      
+
+def bitwise_operations_menu():
+    """Handles bitwise operations: AND, OR, XOR, NOT, Left Shift, Right Shift"""
+    print("="*30)
+    print("Bitwise Operations Menu")
+    print("="*30)
+    print("1. AND")
+    print("2. OR")
+    print("3. XOR")
+    print("4. NOT")
+    print("5. Left Shift")
+    print("6. Right Shift")
+    print("7. Back to Programmer Menu")
+
+    while True:
+        try:
+            print("="*30)
+            choice = int(input("Select an option (1-7): "))
+            if choice == 1:
+                a = int(input("Enter first integer: "))
+                b = int(input("Enter second integer: "))
+                return f"{a} & {b} = {a & b}"
+            elif choice == 2:
+                a = int(input("Enter first integer: "))
+                b = int(input("Enter second integer: "))
+                return f"{a} | {b} = {a | b}"
+            elif choice == 3:
+                a = int(input("Enter first integer: "))
+                b = int(input("Enter second integer: "))
+                return f"{a} ^ {b} = {a ^ b}"
+            elif choice == 4:
+                a = int(input("Enter an integer: "))
+                return f"~{a} = {~a}"
+            elif choice == 5:
+                a = int(input("Enter an integer: "))
+                n = int(input("Enter number of positions to shift left: "))
+                return f"{a} << {n} = {a << n}"
+            elif choice == 6:
+                a = int(input("Enter an integer: "))
+                n = int(input("Enter number of positions to shift right: "))
+                return f"{a} >> {n} = {a >> n}"
+            elif choice == 7:
+                return
+            else:
+                print("Invalid choice. Please select a number between 1 and 7.")
+        except ValueError:
+            print("Invalid input. Please enter valid integers and options.")
+            continue
+        except KeyboardInterrupt:
+            print("Exiting to Programmer Menu.")
+            return
 
 programmer_menu()
 
