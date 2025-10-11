@@ -246,17 +246,14 @@ def octal_to_others_menu():
             choise = int(input(" Select an option (1-4): "))
             if choise==1:
                 octal_number = input('Enter your octal number: ')
-                return print('Octal:',octal_to_Decimal(octal_number))
+                return print('Decimal:',octal_to_Decimal(octal_number))
 
             elif choise==2:
                 octal_number = input('Enter your octal number ')
-                decimal_number=octal_to_Decimal(octal_number)
-                return print('Hexadecimal:',decimal_to_hexadecimal(decimal_number))
-
+                return octal_to_hexadecimal(octal_number)
             elif choise==3:
                 octal_number = input('Enter your octal number ')
-                decimal_number=octal_to_Decimal(octal_number)
-                return print('Binary:',decimal_to_binary(decimal_number))
+                return octal_to_binary(octal_number)
 
             elif choise==4:
                 print("Returning to Base Conversion Menu...")
@@ -287,17 +284,16 @@ def hexadecimal_to_others_menu():
             choice = int(input("Select an option (1-4): "))
             if choice==1:
                 hex_string = input("Enter a hexadecimal number: ").upper()
-                return print('Hexadecimal:',hexadecimal_to_decimal(hex_string))
-                
+                if hexadecimal_to_decimal(hex_string) is not None:
+                    return print('Hexadecimal:',hexadecimal_to_decimal(hex_string))
+                return
             elif choice==2:
                 hex_string = input("Enter a hexadecimal number: ").upper()
-                decimal_number=hexadecimal_to_decimal(hex_string)
-                return print('Binary:',decimal_to_binary(decimal_number))
+                return hexadecimal_to_binary(hex_string)
 
             elif choice==3:
                 hex_string = input("Enter a hexadecimal number: ").upper()
-                decimal_number=hexadecimal_to_decimal(hex_string)
-                return print('Octal:',decimal_to_octal(decimal_number))
+                return hexadecimal_to_octal(hex_string)
 
             elif choice==4:
                 print("Returning to Base Conversion Menu...")
@@ -610,7 +606,6 @@ def hexChar_To_Decimal(ch):
     """Convert a single hexadecimal character to its decimal value."""
 
     try:
-        ch = ch.upper()  # Ensure character is uppercase for consistency
         if 'A' <= ch <= 'F': # Check if it's a number between A-F or 0-9
             return 10 + (ord(ch) - ord('A'))
         
@@ -631,9 +626,6 @@ def hexChar_To_Decimal(ch):
 
 def hexadecimal_to_decimal(hex_string):
     """Convert a hexadecimal string to a decimal integer."""
-
-    # Check for valid hexadecimal characters
-    hex_string = hexChar_To_Decimal(hex_string)
 
     try:
         decimalValue = 0
