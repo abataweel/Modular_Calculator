@@ -1,7 +1,7 @@
-def hexValidate():
+def hexValidate(input):
     x="hi"
     
-def decValidate():
+def decValidate(input):
     x="Hi"
 def octValidate():
     x="Hi"

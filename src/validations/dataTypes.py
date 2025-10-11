@@ -1,20 +1,19 @@
 def floatValidate(input):
-    if isinstance(input, float):
-        return input
-    else:
-        return False
-
+    try:
+     return float(input)
+    except ValueError:
+         return False
 
 def intValidate(input):
-    if isinstance(input, int):
-        return input
-    else:
-        return False
+    try:
+     return int(input)
+    except ValueError:
+         return False
 
 
 def strValidate(input):
-    if isinstance(input, str):
-        return input
-    else:
-        return False
+    try:
+     return str(input)
+    except ValueError:
+         return False
  

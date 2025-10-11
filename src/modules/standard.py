@@ -1,6 +1,5 @@
 #from validations.validators import *
 import math
-
 def standard_menu():
     #Enter while loop in menu, if choice is 1-9 keeps asking again, and if choice is 0 return to main menu
     while True:
@@ -70,4 +69,4 @@ def standard_menu():
         except ValueError:
             print("Error: Please enter valid numbers.")
         
-standard_menu()
+

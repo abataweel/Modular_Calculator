@@ -4,32 +4,29 @@ Programmer Calculator Module
 Handles base conversions and bitwise operations
 
 """
-
+import os,time
 def programmer_menu():
     """Main menu for programmer calculator mode"""
 
-    print("="*30)
-    print("Programmer Calculator Mode")
-    print("="*30) 
-    print("1. Base Conversion\n")
-    print("2. Bitwise Operations\n")
-    print("3. Back to Main Menu")
     
     while True:
+        os.system('cls')
+        print("\033[33mProgrammer Mode:\033[0m")
+        print("\033[34m1. Base Conversion\033[0m")
+        print("\033[34m2. Bitwise Operations\033[0m")
+        print("\033[34m3. Back to Main Menu\033[0m")
         try:
-            print("="*30)
-            choice = int(input("Select an option (1-3) / Ctrl+C to Exit: "))
+            choice = int(input("Select an option (1-3)"))
             if choice == 1:
                 base_conversions_menu()
-                return 
-
+                 
             elif choice == 2:
-                value2=bitwise_operations_menu()
-                return print(value2)
+                bitwise_operations_menu()
                 
             elif choice == 3:
                 print("Returning to Main Menu...")
-                return
+                os.system('cls')
+                break
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 3.")
@@ -46,18 +43,17 @@ def programmer_menu():
 def base_conversions_menu():
     """ Handles base conversions between Binary, Decimal, Hexadecimal, and Octal """
 
-    print("="*30)
-    print("Base Conversion")
-    print("="*30)
-    print("1. Binary to Decimal/Octal\n")
-    print("2. Decimal to Binary/Hexadecimal/Octal\n")
-    print("3. Octal to Binary/Decimal/Hexadecimal\n")
-    print("4. Hexadecimal to Binary/Decimal/Octal\n")
-    print("5. Back to Programmer Menu")
 
     while True:
+        os.system('cls')
+        print("\033[33mBase Conversion Mode:\033[0m")
+        print("\033[34m1. Convert from binary\033[0m")
+        print("\033[34m2. Convert from decimal\033[0m")
+        print("\033[34m3. Convert from octal\033[0m")
+        print("\033[34m4. Convert from hexadecimal\033[0m")
+        print("\033[34m5. Back to Programmer Menu\033[0m")
         try:
-            print("="*30)
+            
             choice=int(input("Select an option (1-5): "))
             if choice == 1:
                 return binary_to_others_menu()
@@ -90,18 +86,18 @@ def base_conversions_menu():
 def bitwise_operations_menu():
     """Handles bitwise operations: AND, OR, XOR, NOT, Left Shift, Right Shift"""
 
-    print("="*30)
-    print("Bitwise Operations Menu")
-    print("="*30)
-    print("1. AND")
-    print("2. OR")
-    print("3. XOR")
-    print("4. NOT")
-    print("5. Left Shift")
-    print("6. Right Shift")
-    print("7. Back to Programmer Menu")
-
+    
     while True:
+        os.system('cls')
+        print("\033[33mBitwise Operations Menu:\033[0m")
+        print("\033[34m1. AND\033[0m")
+        print("\033[34m2. OR\033[0m")
+        print("\033[34m3. XOR\033[0m")
+        print("\033[34m4. NOT\033[0m")
+        print("\033[34m5. Left Shift\033[0m")
+        print("\033[34m6. Right Shift\033[0m")
+        print("\033[34m7. Back to Programmer Menu\033[0m")
+
         try:
             print("="*30)
             choice = int(input("Select an option (1-7): "))
@@ -157,13 +153,13 @@ def bitwise_operations_menu():
 def binary_to_others_menu():
     """ Converts Binary to Decimal, Hexadecimal, and Octal """
 
-    print("="*30)
-    print("1. Binary to Decimal")
-    print("2. Binary to Octal")
-    print("3. Binary to Hexadecimal")
-    print("4. Back to Base Conversion Menu")
-
     while True:
+        os.system('cls')
+        print("\033[33mBinary Conversion Menu:\033[0m")
+        print("\033[34m1. Binary to Decimal")
+        print("\033[34m2. Binary to Octal")
+        print("\033[34m3. Binary to Hexadecimal")
+        print("\033[34m4. Back to Base Conversion Menu")
         try:
             print("="*30)
             choice = int(input("Select an option (1-4): "))
@@ -197,16 +193,16 @@ def binary_to_others_menu():
 
 def decimal_to_others_menu():
     """ Converts Decimal to Binary, Hexadecimal, and Octal """
-
-    print("="*30)
-    print("1. Decimal to Binary")
-    print("2. Decimal to Octal")
-    print("3. Decimal to Hexadecimal")
-    print("4. Back to Base Conversion Menu")
-
+    
     while True:
+        os.system('cls')
+        print("\033[33mDecimal Conversion Menu:\033[0m")
+        print("\033[34m1. Decimal to Binary\033[0m")
+        print("\033[34m2. Decimal to Octal\033[0m")
+        print("\033[34m3. Decimal to Hexadecimal\033[0m")
+        print("\033[34m4. Back to Base Conversion Menu\033[0m")
+
         try:
-            print("="*30)
             choice=int(input("Select an option (1-4): "))
             if choice == 1:
                 decimalNumberUser=int(input("Enter a Decimal number: "))
@@ -239,16 +235,14 @@ def decimal_to_others_menu():
 
 def octal_to_others_menu():
     """ Converts Octal to Decimal,Binary and Hexadecimal """
-
-    print("="*30)
-    print("1. Octal to Decimal")
-    print("2. Octal to Hexadecimal")
-    print("3. Octal to Binary")
-    print("4. Back to Base Conversion Menu")
+    print("\033[33mOctal Conversion Menu:\033[0m")
+    print("\033[34m1. Octal to Decimal\033[0m")
+    print("\033[34m2. Octal to Hexadecimal\033[0m")
+    print("\033[34m3. Octal to Binary\033[0m")
+    print("\033[34m4. Back to Base Conversion Menu\033[0m")
 
     while True :
         try:
-            print("="*30)
             choise = int(input(" Select an option (1-4): "))
             if choise==1:
                 octal_number = input('Enter your octal number: ')
@@ -266,7 +260,7 @@ def octal_to_others_menu():
 
             elif choise==4:
                 print("Returning to Base Conversion Menu...")
-                return base_conversions_menu()
+                break
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 4.")
@@ -279,20 +273,17 @@ def octal_to_others_menu():
              return
 
 
-
 def hexadecimal_to_others_menu():
     """ Converts Hexadecimal to Binary, Decimal and Octal """
 
-    print("="*30)
-    print("Hexadecimal to Others Conversion Menu")
-    print("1. Hexadecimal to Decimal")
-    print("2. Hexadecimal to Binary")
-    print("3. Hexadecimal to Octal")
-    print("4. Back to Main Menu")
-
     while True:
+        os.system('cls')
+        print("\033[33mHexadecimal Conversion Menu:\033[0m")
+        print("\033[34m1. Hexadecimal to Decimal\033[0m")
+        print("\033[34m2. Hexadecimal to Binary\033[0m")
+        print("\033[34m3. Hexadecimal to Octal\033[0m")
+        print("\033[34m4. Back to Main Menu\033[0m")
         try:
-            print('=' * 30)
             choice = int(input("Select an option (1-4): "))
             if choice==1:
                 hex_string = input("Enter a hexadecimal number: ").upper()
@@ -668,9 +659,3 @@ def hexadecimal_to_decimal(hex_string):
     except TypeError:
         print("Invalid input. Please enter a valid hexadecimal number.")
         return
-
-
-
- 
-
- 

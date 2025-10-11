@@ -5,18 +5,22 @@
 
 """
 import csv
-import csv
 import os
 from datetime import datetime
 
-FILENAME = "history.csv"
+FILENAME = "./src/utils/history.csv"
 
 
 def logCalc(module,function,input,result):
-    date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    file_exists = os.path.exists(FILENAME)
-    with open(FILENAME, mode="a", newline="") as file:
-        writer = csv.writer(file)
-        if not file_exists:
-            writer.writerow(["Date","Module","function","input","result"])
-        writer.writerow([date, module, function,input,result])
+    try:
+     FILENAME = os.path.join(os.path.dirname(__file__), "history.csv")
+ 
+     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+     file_exists = os.path.exists(FILENAME)
+     with open(FILENAME, mode="a", newline="") as file:
+         writer = csv.writer(file)
+         if not file_exists:
+             writer.writerow(["Date","Module","Function","input","result"])
+         writer.writerow([date, str(module), str(function),input,result])
+    except PermissionError:
+        print("No permission for writing, please close the excel file")
