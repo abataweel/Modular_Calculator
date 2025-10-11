@@ -34,7 +34,7 @@ def scintific_menu():
                 hyperpolicandInverse_menu()
                 
             elif choice == 3:
-                print("factorial")
+                print("factorial") 
                 break
             elif choice == 4:
                 
@@ -156,7 +156,6 @@ def trigonometric_menu():
              time.sleep(2)
              break
 
-        
 
 def Trigonometric(trig_faunction) : 
     Degrees_or_radians = input('Degrees or radians? ')
@@ -222,15 +221,3 @@ def hyperbolic(hyperbolic_function) :
          return acosh(value),value
     elif hyperbolic_function  ==  'atanh' and value <1 and value > -1:
          return atanh(value),value
-
-
-
-        
-
-
-
-
-
-
-
-

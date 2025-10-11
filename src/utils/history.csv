@@ -15,3 +15,7 @@ Date,Module,function,input,result
 2025-10-11 16:34:33,scientific,cos,1.5707963267948966,6.123233995736766e-17
 2025-10-11 17:05:13,standard,addition,"(1.0,1.0)",2.0
 2025-10-11 17:07:47,standard,addition,"(1.0,1.0)",2.0
+2025-10-11 17:18:19,standard,addition,"(1.0,2.0)",3.0
+2025-10-11 17:18:32,standard,subtraction,"(3.0,1.0)",2.0
+2025-10-11 17:19:40,scientific,sin,6,-0.27941549819892586
+2025-10-11 17:43:30,scientific,sin,1,0.8414709848078965

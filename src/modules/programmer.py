@@ -4,6 +4,8 @@ Programmer Calculator Module
 Handles base conversions and bitwise operations
 
 """
+from validations.dataTypes import intValidate
+from utils.calculationsHistory import logCalc
 import os,time
 def programmer_menu():
     """Main menu for programmer calculator mode"""
@@ -16,7 +18,17 @@ def programmer_menu():
         print("\033[34m2. Bitwise Operations\033[0m")
         print("\033[34m3. Back to Main Menu\033[0m")
         try:
-            choice = int(input("Select an option (1-3)"))
+            choice = intValidate(input("Please Enter A Choice:"))
+            if not intValidate(choice):
+              print("\033[91mError:  Enter integer numbers only\033[0m")
+              time.sleep(3)
+              os.system("cls")
+              continue
+            elif choice <1 or choice>4:
+              print("\033[91mError:Select A number within the menu range\033[0m")
+              time.sleep(3)
+              os.system("cls")
+              continue    
             if choice == 1:
                 base_conversions_menu()
                  
@@ -99,7 +111,6 @@ def bitwise_operations_menu():
         print("\033[34m7. Back to Programmer Menu\033[0m")
 
         try:
-            print("="*30)
             choice = int(input("Select an option (1-7): "))
             if choice == 1:
                 a = int(input("Enter first integer: "))
