@@ -1,1 +1,1 @@
-from utils.calculationsHistory import logCalc
+from ..utils.calculationsHistory import logCalc

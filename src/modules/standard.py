@@ -1,7 +1,7 @@
 #from validations.validators import *
 import math,os,time
-from utils.calculationsHistory import logCalc
-from validations.dataTypes import intValidate
+from ..utils.calculationsHistory import logCalc
+from ..validations.dataTypes import intValidate
 
 def standard_menu():
     #Enter while loop in menu, if choice is 1-9 keeps asking again, and if choice is 0 return to main menu

@@ -1,14 +1,16 @@
-#from validations.validators import *
 """
 Programmer Calculator Module
 Handles base conversions and bitwise operations
 
 """
-import os,time
+import os,time,sys
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from validations.dataTypes import intValidate
+
 def programmer_menu():
     """Main menu for programmer calculator mode"""
 
-    
     while True:
         os.system('cls')
         print("\033[33mProgrammer Mode:\033[0m")
@@ -16,27 +18,31 @@ def programmer_menu():
         print("\033[34m2. Bitwise Operations\033[0m")
         print("\033[34m3. Back to Main Menu\033[0m")
         try:
-            choice = int(input("Select an option (1-3)"))
+            choice = intValidate(input("Select an option (1-3): "))
             if choice == 1:
-                base_conversions_menu()
-                 
+                result = base_conversions_menu()
+                print(result)
+                time.sleep(3)
             elif choice == 2:
-                bitwise_operations_menu()
-                
+                result = bitwise_operations_menu()
+                print(result)
+                time.sleep(3)
             elif choice == 3:
                 print("Returning to Main Menu...")
                 os.system('cls')
-                break
-            
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 3.")
-            continue
+                time.sleep(3)
+            else:
+                print("Invalid choice. Please select a number between 1 and 3.")
+                time.sleep(3)
+                continue
         except KeyboardInterrupt:
             print("Exiting to Main Menu.")
             return
         except TypeError:
             print("Invalid input. Please enter a valid number.")
-            return
+            time.sleep(3)
+            break
+
 
         
 
@@ -54,7 +60,7 @@ def base_conversions_menu():
         print("\033[34m5. Back to Programmer Menu\033[0m")
         try:
             
-            choice=int(input("Select an option (1-5): "))
+            choice=intValidate(input("Select an option (1-5): "))
             if choice == 1:
                 return binary_to_others_menu()
             
@@ -100,7 +106,7 @@ def bitwise_operations_menu():
 
         try:
             print("="*30)
-            choice = int(input("Select an option (1-7): "))
+            choice = intValidate(input("Select an option (1-7): "))
             if choice == 1:
                 a = int(input("Enter first integer: "))
                 b = int(input("Enter second integer: "))
@@ -162,7 +168,7 @@ def binary_to_others_menu():
         print("\033[34m4. Back to Base Conversion Menu")
         try:
             print("="*30)
-            choice = int(input("Select an option (1-4): "))
+            choice = intValidate(input("Select an option (1-4): "))
             if choice == 1:
                 binaryNumberUser = int(input("Enter a Binary number: "))
                 return print("Decimal:", binary_to_decimal(binaryNumberUser))
@@ -203,7 +209,7 @@ def decimal_to_others_menu():
         print("\033[34m4. Back to Base Conversion Menu\033[0m")
 
         try:
-            choice=int(input("Select an option (1-4): "))
+            choice=intValidate(input("Select an option (1-4): "))
             if choice == 1:
                 decimalNumberUser=int(input("Enter a Decimal number: "))
                 return print("Binary:",decimal_to_binary(decimalNumberUser))
@@ -243,7 +249,7 @@ def octal_to_others_menu():
 
     while True :
         try:
-            choise = int(input(" Select an option (1-4): "))
+            choise = intValidate(input(" Select an option (1-4): "))
             if choise==1:
                 octal_number = input('Enter your octal number: ')
                 return print('Decimal:',octal_to_Decimal(octal_number))
@@ -281,7 +287,7 @@ def hexadecimal_to_others_menu():
         print("\033[34m3. Hexadecimal to Octal\033[0m")
         print("\033[34m4. Back to Main Menu\033[0m")
         try:
-            choice = int(input("Select an option (1-4): "))
+            choice = intValidate(input("Select an option (1-4): "))
             if choice==1:
                 hex_string = input("Enter a hexadecimal number: ").upper()
                 if hexadecimal_to_decimal(hex_string) is not None:
@@ -651,3 +657,7 @@ def hexadecimal_to_decimal(hex_string):
     except TypeError:
         print("Invalid input. Please enter a valid hexadecimal number.")
         return
+
+# Main execution block - runs when file is executed directly
+if __name__ == "__main__":
+    programmer_menu()

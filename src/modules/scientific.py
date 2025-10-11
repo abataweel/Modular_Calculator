@@ -1,7 +1,6 @@
-import time,os,sys
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))  # add src to path
-from validations.dataTypes import intValidate
-from utils.calculationsHistory import logCalc
+import time,os
+from ..validations.dataTypes import intValidate
+from ..utils.calculationsHistory import logCalc
 
 from math import sin, cos, tan, asin, acos, atan, radians, degrees , pi , factorial , log ,exp , e ,sinh , cosh , tanh ,asinh , acosh , atanh
 def scintific_menu():
