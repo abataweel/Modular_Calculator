@@ -1,4 +1,5 @@
 from modules import scientific,programmer,standard,converter
+from utils.calculationsHistory import logCalc
 
 
 def main_menu():
@@ -8,4 +9,6 @@ def main_menu():
      if not isinstance(choice,int):
          print("\033[91mError:  Enter numbers only\033[0m")
          continue
+     logCalc("scintific","sin","3","2")
      
+main_menu()
