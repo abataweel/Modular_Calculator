@@ -21,15 +21,19 @@ def main_menu():
           os.system("cls")
           continue
       if choice == 1:
+          os.system("cls")
           standard.standard_menu()
           os.system("cls")
       if choice == 2:
+          os.system("cls")
           programmer.programmer_menu()
           os.system("cls")
       if choice == 3:
+          os.system("cls")
           scientific.scintific_menu()
           os.system("cls")
       if choice == 4:
+          os.system("cls")
           converter.converter_menu()
           os.system("cls")
       if choice == 5: # choice of history of calculations

@@ -1,11 +1,6 @@
-import time,os
-import sys
+import time,os,sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))  # add src to path
-
 from validations.dataTypes import intValidate
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))  # add src to path
-
 from utils.calculationsHistory import logCalc
 
 from math import sin, cos, tan, asin, acos, atan, radians, degrees , pi , factorial , log ,exp , e ,sinh , cosh , tanh ,asinh , acosh , atanh
@@ -49,7 +44,6 @@ def scintific_menu():
              time.sleep(2)
              break
 def hyperpolicandInverse_menu():
-    os.system("cls")
     """ Handles hyperpolic menu functions """
     
     while True:
@@ -73,47 +67,43 @@ def hyperpolicandInverse_menu():
           os.system("cls")
           continue    
       if choice == 1:
-             result,input = hyperbolic("sinh")
+             result,userInput = hyperbolic("sinh")
+             print("The answer is ",result)
+             logCalc("scientific","sinh",userInput,result)
+             print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")
-             logCalc("scientific","sinh",input,result)
                  
       elif choice == 2:
-             result,input = hyperbolic("cosh")
+             result,userInput = hyperbolic("cosh")
              print("The answer is ",result)
-             logCalc("scientific","cosh",input,result)
+             logCalc("scientific","cosh",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")
              
       elif choice == 3:
-             result,input = hyperbolic("tanh")
+             result,userInput = hyperbolic("tanh")
              print("The answer is ",result)
-             logCalc("scientific","tanh",input,result)
+             logCalc("scientific","tanh",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")  
       elif choice == 4:
-             result,input = hyperbolic("asin")
+             result,userInput = hyperbolic("asin")
              print("The answer is ",result)
-             logCalc("scientific","asin",input,result)
+             logCalc("scientific","asin",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")
       elif choice == 5:
-             result,input = hyperbolic("acos")
+             result,userInput = hyperbolic("acos")
              print("The answer is ",result)
-             logCalc("scientific","acos",input,result)
+             logCalc("scientific","acos",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")
       elif choice == 6:
-             result,input = Trigonometric("atan")
+             result,userInput = Trigonometric("atan")
              print("The answer is ",result)
-             logCalc("scientific","atan",input,result)
+             logCalc("scientific","atan",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")  
       elif choice == 7:
              print("Returning to scientific menu...")
              time.sleep(2)
@@ -146,7 +136,7 @@ def trigonometric_menu():
              logCalc("scientific","sin",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")
+             
                  
       elif choice == 2:
              result,userInput = Trigonometric("cos")
@@ -154,7 +144,6 @@ def trigonometric_menu():
              logCalc("scientific","cos",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")
              
       elif choice == 3:
              result,userInput = Trigonometric("tan")
@@ -162,7 +151,6 @@ def trigonometric_menu():
              logCalc("scientific","cos",userInput,result)
              print("Result logged to history ✅")
              time.sleep(3)
-             os.system("cls")  
       elif choice == 4:
              print("Returning to scientific menu...")
              time.sleep(2)
