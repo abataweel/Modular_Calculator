@@ -9,7 +9,6 @@ def scintific_menu():
     """Main menu for scintific calculator mode"""
 
     while True:
-            os.system('cls')
             print("\033[33mScientific Mode:\033[0m")
             print("\033[34m1.Trigonometric Functions\033[0m")
             print("\033[34m2.Hyperpolic Functions\033[0m")
@@ -34,10 +33,12 @@ def scintific_menu():
                 hyperpolicandInverse_menu()
                 
             elif choice == 3:
-                print("factorial") 
+                x = factorial_function()
+                print("The answer is ",x)
+                time.sleep(19)
                 break
             elif choice == 4:
-                
+                logarithmic_menu()
                 break
             elif choice == 5:
              print("Returning to main menu...")
@@ -194,15 +195,31 @@ def main() :
    print(loge(q,a,b))
 
 
-def factorial_function(n) :
-    return factorial(n) 
+def factorial_function() :  
+    n = eval(input('Enter a non-negative integer: '))
 
+    return factorial(n) 
+def logarithmic_menu() : 
+    eorlog = eval(input('eorlog')) 
+    if eorlog == 1 : 
+        power = eval(input('enter the power of e')) 
+        x = (eorlog , power)
+        print('The answer is ',loge(*x))
+        time.sleep(5)
+        return loge(*x)
+    else : 
+        base = eval(input('enter the base of the logratihm'))
+        hart =  eval(input('enter the hart of the logratihm'))
+        x = (eorlog , hart , base)
+        print('The answer is ',loge(*x))
+    time.sleep(5)
+    return loge(*x)
 def loge(*x) :
     exorlog = x[0] 
-    if exorlog == 'e' : 
+    if exorlog == 1 : 
         powerr = x[1]
         return exp(powerr) 
-    elif exorlog == 'log' :
+    elif exorlog == 2 :
      hart = x[1] 
      base = x[2]
      if hart >0 and base >0 and base !=1 :
