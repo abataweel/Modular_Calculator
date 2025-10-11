@@ -1,10 +1,10 @@
 #from validations.validators import *
-import math,os,time
+import math, os, time
 from utils.calculationsHistory import logCalc
 from validations.dataTypes import intValidate
 
 def standard_menu():
-    #Enter while loop in menu, if choice is 1-9 keeps asking again, and if choice is 0 return to main menu
+    # Enter while loop in menu, if choice is 1-9 keeps asking again, and if choice is 0 return to main menu
     while True:
         print("\033[33mStandard Mode:\033[0m")
         print("\033[34m1. Addition (+)\033[0m")
@@ -17,45 +17,49 @@ def standard_menu():
         print("\033[34m8. Reciprocal (1/x)\033[0m")
         print("\033[34m9. Percentage (% of a number)\033[0m")
         print("\033[34m10. Return to Main Menu\033[0m")
-        
 
         choice = intValidate(input("Please Enter A Choice:"))
         if not intValidate(choice):
-          print("\033[91mError:  Enter integer numbers only\033[0m")
-          time.sleep(3)
-          os.system("cls")
-          continue
-        elif choice <1 or choice>10:
-          print("\033[91mError:Select A number within the menu range\033[0m")
-          time.sleep(3)
-          os.system("cls")
-          continue
+            print("\033[91mError:  Enter integer numbers only\033[0m")
+            time.sleep(3)
+            os.system("cls")
+            continue
+        elif choice < 1 or choice > 10:
+            print("\033[91mError: Select A number within the menu range\033[0m")
+            time.sleep(3)
+            os.system("cls")
+            continue
         if choice == 10:
             print("Returning to main menu.....")
             time.sleep(3)
             break
-#operations from 1-6 requires 2 numbers for input so if choice 1-6 :
+
         try:
-            if choice in [1,2,3,4,5,6]:
-                num1 = float(input("Enter first number: "))
-                num2 = float(input("Enter second number: "))
+            # Operations from 1-6 require 2 numbers
+            if choice in [1, 2, 3, 4, 5, 6]:
+                try:
+                    num1 = eval(input("Enter first number: "))
+                    num2 = eval(input("Enter second number: "))
+                except Exception:
+                    print("Error: Please enter valid numbers.")
+                    continue
 
                 if choice == 1:
                     result = num1 + num2
-                    print("The answer is ",result)
-                    logCalc("standard","addition",f"({num1},{num2})",result)
+                    print("The answer is ", result)
+                    logCalc("standard", "addition", f"({num1},{num2})", result)
                     print("Result logged to history ✅")
                     time.sleep(3)
                 elif choice == 2:
                     result = num1 - num2
-                    print("The answer is ",result)
-                    logCalc("standard","subtraction",f"({num1},{num2})",result)
+                    print("The answer is ", result)
+                    logCalc("standard", "subtraction", f"({num1},{num2})", result)
                     print("Result logged to history ✅")
                     time.sleep(3)
                 elif choice == 3:
                     result = num1 * num2
-                    print("The answer is ",result)
-                    logCalc("standard","multiplication",f"({num1},{num2})",result)
+                    print("The answer is ", result)
+                    logCalc("standard", "multiplication", f"({num1},{num2})", result)
                     print("Result logged to history ✅")
                     time.sleep(3)
                 elif choice == 4:
@@ -63,55 +67,66 @@ def standard_menu():
                         print("Error: Cannot divide by zero.")
                         continue
                     result = num1 / num2
-                    print("The answer is ",result)
-                    logCalc("standard","division",f"({num1},{num2})",result)
+                    print("The answer is ", result)
+                    logCalc("standard", "division", f"({num1},{num2})", result)
                     print("Result logged to history ✅")
                     time.sleep(3)
                 elif choice == 5:
                     result = num1 % num2
-                    print("The answer is ",result)
-                    logCalc("standard","reminder",f"({num1},{num2})",result)
+                    print("The answer is ", result)
+                    logCalc("standard", "reminder", f"({num1},{num2})", result)
                     print("Result logged to history ✅")
                     time.sleep(3)
                 elif choice == 6:
                     result = num1 ** num2
-                    print("The answer is ",result)
-                    logCalc("standard","exponential",f"({num1},{num2})",result)
+                    print("The answer is ", result)
+                    logCalc("standard", "exponential", f"({num1},{num2})", result)
                     print("Result logged to history ✅")
                     time.sleep(3)
 
             elif choice == 7:
-                num = float(input("Enter number: "))
+                try:
+                    num = eval(input("Enter number: "))
+                except Exception:
+                    print("Error: Please enter valid numbers.")
+                    continue
                 if num < 0:
                     print("Error: square root of negative number is not supported in standard mode.")
                 else:
                     result = math.sqrt(num)
-                    print("The answer is ",result)
-                    logCalc("standard","Square Root",num,result)
+                    print("The answer is ", result)
+                    logCalc("standard", "Square Root", num, result)
                     print("Result logged to history ✅")
                     time.sleep(3)
 
             elif choice == 8:
-                num = float(input("Enter number: "))
+                try:
+                    num = eval(input("Enter number: "))
+                except Exception:
+                    print("Error: Please enter valid numbers.")
+                    continue
                 if num == 0:
                     print("Error: Cannot divide by zero.")
                 else:
-                    result =1 / num
-                    print("The answer is ",result)
-                    logCalc("standard","Reciprical",num,result)
+                    result = 1 / num
+                    print("The answer is ", result)
+                    logCalc("standard", "Reciprical", num, result)
                     print("Result logged to history ✅")
                     time.sleep(3)
 
             elif choice == 9:
-                base = float(input("Enter base number: "))
-                percent = float(input("Enter percentage: "))
+                try:
+                    base = eval(input("Enter base number: "))
+                    percent = eval(input("Enter percentage: "))
+                except Exception:
+                    print("Error: Please enter valid numbers.")
+                    continue
                 result = base * (percent / 100)
-                print("The answer is ",result)
-                logCalc("standard","Percentage",num,result)
+                print("The answer is ", result)
+                logCalc("standard", "Percentage", base, result)
                 print("Result logged to history ✅")
                 time.sleep(3)
 
         except ValueError:
             print("Error: Please enter valid numbers.")
-        
 
