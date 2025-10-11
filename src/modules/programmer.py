@@ -20,8 +20,7 @@ def programmer_menu():
         try:
             choice = intValidate(input("Select an option (1-3): "))
             if choice == 1:
-                result = base_conversions_menu()
-                print(result)
+                base_conversions_menu()
                 time.sleep(3)
             elif choice == 2:
                 result = bitwise_operations_menu()
@@ -241,6 +240,7 @@ def decimal_to_others_menu():
 
 def octal_to_others_menu():
     """ Converts Octal to Decimal,Binary and Hexadecimal """
+    os.system('cls')
     print("\033[33mOctal Conversion Menu:\033[0m")
     print("\033[34m1. Octal to Decimal\033[0m")
     print("\033[34m2. Octal to Hexadecimal\033[0m")
@@ -606,6 +606,43 @@ def octal_to_Decimal(octal_number):
         print('Invalid input. Octal number has digits range of 0..7.')
         return
 
+def octal_to_binary(octal_number):
+    """Convert octal to binary by first converting to decimal then to binary."""
+    
+    try:
+        decimal_number=octal_to_Decimal(octal_number)
+        if decimal_number is None:
+            return  # If conversion failed, exit the function
+        return print('Binary:',decimal_to_binary(decimal_number))
+    
+    except ValueError:
+        print("Invalid input. Please enter a valid octal number.")
+        return
+    except KeyboardInterrupt:
+        print("Exiting to Base Conversion Menu.")
+        return
+    except TypeError:
+        print("Invalid input. Please enter a valid octal number.")
+        return
+
+def octal_to_hexadecimal(octal_number):
+    """Convert octal to hexadecimal by first converting to decimal then to hexadecimal."""
+    
+    try:
+        decimal_number=octal_to_Decimal(octal_number)
+        if decimal_number is None:
+            return  # If conversion failed, exit the function
+        return print('Hexadecimal:',decimal_to_hexadecimal(decimal_number))
+    
+    except ValueError:
+        print("Invalid input. Please enter a valid octal number.")
+        return
+    except KeyboardInterrupt:
+        print("Exiting to Base Conversion Menu.")
+        return
+    except TypeError:
+        print("Invalid input. Please enter a valid octal number.")
+        return
 
 
 def hexChar_To_Decimal(ch):
@@ -650,6 +687,42 @@ def hexadecimal_to_decimal(hex_string):
     
     except ValueError:
         print("Invalid hexadecimal number, hexadecimal numbers go from 0-9,a-f.")
+        return
+    except KeyboardInterrupt:
+        print("Exiting to Base Conversion Menu.")
+        return
+    except TypeError:
+        print("Invalid input. Please enter a valid hexadecimal number.")
+        return
+
+def hexadecimal_to_binary(hex_string):
+    """Convert hexadecimal to binary by first converting to decimal then to binary."""
+
+    try:
+        decimal_number=hexadecimal_to_decimal(hex_string)
+        if decimal_number is not None:
+            return print('Binary:',decimal_to_binary(decimal_number))
+        return  # If conversion failed, exit the function
+    except ValueError:
+        print("Invalid input. Please enter a valid hexadecimal number.")
+        return
+    except KeyboardInterrupt:
+        print("Exiting to Base Conversion Menu.")
+        return
+    except TypeError:
+        print("Invalid input. Please enter a valid hexadecimal number.")
+        return
+ 
+def hexadecimal_to_octal(hex_string):
+    """Convert hexadecimal to octal by first converting to decimal then to octal."""
+
+    try:
+        decimal_number=hexadecimal_to_decimal(hex_string)
+        if decimal_number is not None:
+            return print('Octal:',decimal_to_octal(decimal_number))
+        return  # If conversion failed, exit the function
+    except ValueError:
+        print("Invalid input. Please enter a valid hexadecimal number.")
         return
     except KeyboardInterrupt:
         print("Exiting to Base Conversion Menu.")
