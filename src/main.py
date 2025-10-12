@@ -1,4 +1,4 @@
-from modules import scientific,programmer,standard,converter
+from modules import scientific, programmer, standard, converter
 from validations.dataTypes import intValidate
 import os
 file_path = os.path.join(os.path.dirname(__file__), "utils", "history.csv") # adding history file to the path to open

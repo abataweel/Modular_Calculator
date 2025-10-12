@@ -1,7 +1,7 @@
 #from validations.validators import *
-import math,os,time
-from ..utils.calculationsHistory import logCalc
-from ..validations.dataTypes import intValidate
+import time, os,math
+from validations.dataTypes import intValidate,floatValidate
+from utils.calculationsHistory import logCalc
 
 def standard_menu():
     #Enter while loop in menu, if choice is 1-9 keeps asking again, and if choice is 0 return to main menu
@@ -66,7 +66,7 @@ def standard_menu():
                     time.sleep(3)
                 elif choice == 4:
                     if num2 == 0:
-                        print("Error: Cannot divide by zero.")
+                        print("\033[91mError: Cannot divide by zero.\033[0m")
                         continue
                     result = num1 / num2
                     print("The answer is ",result)

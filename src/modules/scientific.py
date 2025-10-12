@@ -1,6 +1,6 @@
 import time, os
-from ..validations.dataTypes import intValidate
-from ..utils.calculationsHistory import logCalc
+from validations.dataTypes import intValidate
+from utils.calculationsHistory import logCalc
 from math import sin, cos, tan, asin, acos, atan, radians, degrees, pi, factorial, log, exp, e, sinh, cosh, tanh, asinh, acosh, atanh
 
 def scintific_menu():
