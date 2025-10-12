@@ -2,7 +2,6 @@
 
 -- date and time / module / specific calucaltion /  result
 
-
 """
 import csv
 import os
@@ -10,11 +9,10 @@ from datetime import datetime
 
 FILENAME = "./src/utils/history.csv"
 
-
 def logCalc(module,function,input,result):
     try:
      FILENAME = os.path.join(os.path.dirname(__file__), "history.csv")
- 
+
      date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
      file_exists = os.path.exists(FILENAME)
      with open(FILENAME, mode="a", newline="") as file:
@@ -26,3 +24,5 @@ def logCalc(module,function,input,result):
         print("No permission for writing, please close the excel file")
     except FileNotFoundError:
         print("\033[91mError:History file not found, new file created...\033[0m")
+        
+        
