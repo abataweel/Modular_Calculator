@@ -1,12 +1,12 @@
 import time, os
-from validations.dataTypes import intValidate
-from utils.calculationsHistory import logCalc
+from ..validations.dataTypes import intValidate
+from ..utils.calculationsHistory import logCalc
 from math import sin, cos, tan, asin, acos, atan, radians, degrees, pi, factorial, log, exp, e, sinh, cosh, tanh, asinh, acosh, atanh
 
 def scintific_menu():
     """Main menu for scientific calculator mode"""
     while True:
-        os.system('cls')
+        os.system('cls' if os.name == 'nt' else 'clear')
         print("\033[33mScientific Mode:\033[0m")
         print("\033[34m1.Trigonometric Functions\033[0m")
         print("\033[34m2.Hyperpolic Functions\033[0m")
@@ -29,12 +29,8 @@ def scintific_menu():
         elif choice == 2:
             hyperpolicandInverse_menu()
         elif choice == 3:
-           
-                n = intValidate(input("Enter a number for factorial: "))
-                if not n:
-                     print("\033[91mError: Please enter integer numbers only.\033[0m")
-                     time.sleep(2)
-                     continue
+            try:
+                n = int(input("Enter a number for factorial: "))
                 if n < 0:
                     print("\033[91mError: Factorial is not defined for negative numbers.\033[0m")
                     time.sleep(2)
@@ -43,6 +39,9 @@ def scintific_menu():
                 print(f"The answer is {result}")
                 logCalc("scientific","factorial",n,result)
                 print("Result logged to history ✅")
+                time.sleep(2)
+            except ValueError:
+                print("\033[91mError: Please enter a valid integer.\033[0m")
                 time.sleep(2)
         elif choice == 4:
             try:
@@ -79,16 +78,16 @@ def hyperpolicandInverse_menu():
     """ Handles hyperbolic menu functions """
     while True:
         print("\033[33mHyperbolic & Inverse Menu:\033[0m")
-        print("\033[34m1.sinh")
-        print("2.cosh")
-        print("3.tanh")
-        print("4.asin")
-        print("5.acos")
-        print("6.atan")
-        print("7.Back to scientific menu\033[0m") 
+        print("\033[34m1.sinh\033[0m")
+        print("\033[34m2.cosh\033[0m")
+        print("\033[34m3.tanh\033[0m")
+        print("\033[34m4.asin\033[0m")
+        print("\033[34m5.acos\033[0m")
+        print("\033[34m6.atan\033[0m")
+        print("\033[34m7.Back to scientific menu\033[0m") 
 
         choice = intValidate(input("Please Enter A Choice:"))
-        if not choice:
+        if choice is None:
             print("\033[91mError: Enter integer numbers only\033[0m")
             time.sleep(2)
             continue
@@ -97,39 +96,46 @@ def hyperpolicandInverse_menu():
             time.sleep(2)
             continue    
 
-        if choice == 1:
-            result,userInput = hyperbolic("sinh")
-        elif choice == 2:
-               result,userInput = hyperbolic("cosh")
-        elif choice == 3:
+        try:
+            if choice == 1:
+                result,userInput = hyperbolic("sinh")
+            elif choice == 2:
+                result,userInput = hyperbolic("cosh")
+            elif choice == 3:
                 result,userInput = hyperbolic("tanh")
-        elif choice == 4:
+            elif choice == 4:
                 result,userInput = hyperbolic("asinh")
-        elif choice == 5:
+            elif choice == 5:
                 result,userInput = hyperbolic("acosh")
-        elif choice == 6:
+            elif choice == 6:
                 result,userInput = hyperbolic("atanh")
-        elif choice == 7:
+            elif choice == 7:
                 print("Returning to scientific menu...")
                 time.sleep(2)
                 break
-        print("The answer is ",result)
-        logCalc("scientific","function",userInput,result)
-        print("Result logged to history ✅")
-        time.sleep(2)
+            print("The answer is ",result)
+            logCalc("scientific","function",userInput,result)
+            print("Result logged to history ✅")
+            time.sleep(2)
+        except ValueError:
+            print("\033[91mError: Invalid numeric input.\033[0m")
+            time.sleep(2)
+        except Exception as e:
+            print(f"\033[91mUnexpected error: {e}\033[0m")
+            time.sleep(2)
 
 
 def trigonometric_menu():
     """ Handles trigonometric menu functions """
     while True:
         print("\033[33mTrigonometric Menu:\033[0m")
-        print("\033[34m1.sin")
-        print("2.cos")
-        print("3.tan")
-        print("4.Back to scientific menu\033[0m")
+        print("\033[34m1.sin\033[0m")
+        print("\033[34m2.cos\033[0m")
+        print("\033[34m3.tan\033[0m")
+        print("\033[34m4.Back to scientific menu\033[0m")
 
         choice = intValidate(input("Please Enter A Choice:"))
-        if not choice:
+        if choice is None:
             print("\033[91mError: Enter integer numbers only\033[0m")
             time.sleep(2)
             continue
@@ -138,29 +144,38 @@ def trigonometric_menu():
             time.sleep(2)
             continue    
 
-        
-        if choice == 1:
+        try:
+            if choice == 1:
                 result,userInput = Trigonometric("sin")
-        elif choice == 2:
+            elif choice == 2:
                 result,userInput = Trigonometric("cos")
-        elif choice == 3:
+            elif choice == 3:
                 result,userInput = Trigonometric("tan")
-        elif choice == 4:
-          print("Returning to scientific menu...")
-          time.sleep(2)
-          break
+            elif choice == 4:
+                print("Returning to scientific menu...")
+                time.sleep(2)
+                break
 
-        print("The answer is ",result)
-        logCalc("scientific","trig",userInput,result)
-        print("Result logged to history ✅")
-        time.sleep(2)
+            print("The answer is ",result)
+            logCalc("scientific","trig",userInput,result)
+            print("Result logged to history ✅")
+            time.sleep(2)
+        except ValueError:
+            print("\033[91mError: Invalid numeric input.\033[0m")
+            time.sleep(2)
+        except Exception as e:
+            print(f"\033[91mUnexpected error: {e}\033[0m")
+            time.sleep(2)
 
 
 def Trigonometric(trig_function): 
     while True:
-        Degrees_or_radians = input('Degrees or radians? ').strip().lower()
+        Degrees_or_radians =strValidate(input('Enter "degrees" or "radians": ').strip().lower())
+        if not Degrees_or_radians:
+            print("\033[91mError: Please enter letters only.\033[0m")
+            time.sleep(2)
+            continue
 
-        # Allow common shorthand inputs
         if Degrees_or_radians in ['deg', 'degree', 'degrees']:
             Degrees_or_radians = 'degrees'
         elif Degrees_or_radians in ['rad', 'radian', 'radians']:
@@ -168,14 +183,14 @@ def Trigonometric(trig_function):
         else:
             print("\033[91mError: Please enter only 'Degrees' or 'radians' (or 'deg'/'rad').\033[0m")
             time.sleep(2)
-            continue  # ask again instead of breaking
+            continue  
 
-        
-        value = int(input('Enter value: '))
-        if not value:   
-         print("\033[91mError: Please enter an integer value.\033[0m")
-         time.sleep(2)
-         continue
+        try:
+            value = int(input('Enter value: '))
+        except ValueError:
+            print("\033[91mError: Please enter an integer value.\033[0m")
+            time.sleep(2)
+            continue
 
         if Degrees_or_radians == 'degrees' and not trig_function.startswith('a'):
             value = radians(value)
@@ -218,8 +233,11 @@ def Trigonometric(trig_function):
 
 
 def factorial_function(n):
+    try:
         return factorial(n)
-   
+    except ValueError:
+        print("\033[91mError: Factorial undefined for negative numbers.\033[0m")
+        return None
 
 
 def hyperbolic(hyperbolic_function): 
@@ -251,13 +269,4 @@ def hyperbolic(hyperbolic_function):
         print(f"\033[91mUnexpected error: {e}\033[0m")
         time.sleep(2)
         return None, None
-
-        
-
-
-
-
-
-
-
 
