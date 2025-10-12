@@ -24,3 +24,5 @@ def logCalc(module,function,input,result):
          writer.writerow([date, str(module), str(function),input,result])
     except PermissionError:
         print("No permission for writing, please close the excel file")
+    except FileNotFoundError:
+        print("\033[91mError:History file not found, new file created...\033[0m")
