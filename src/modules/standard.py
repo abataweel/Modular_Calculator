@@ -37,8 +37,14 @@ def standard_menu():
 #operations from 1-6 requires 2 numbers for input so if choice 1-6 :
         try:
             if choice in [1,2,3,4,5,6]:
-                num1 = float(input("Enter first number: "))
-                num2 = float(input("Enter second number: "))
+                try:
+                    num1 = eval(input("Enter first number: "))
+                    num2 = eval(input("Enter second number: "))
+                except Exception:
+                    print("\033[91mError: Please enter valid numbers only.\033[0m")
+                    time.sleep(3)
+                    os.system("cls")
+                    continue
 
                 if choice == 1:
                     result = num1 + num2
@@ -81,7 +87,13 @@ def standard_menu():
                     time.sleep(3)
 
             elif choice == 7:
-                num = float(input("Enter number: "))
+                try:
+                    num = eval(input("Enter number: "))
+                except Exception:
+                    print("\033[91mError: Please enter a valid number.\033[0m")
+                    time.sleep(3)
+                    os.system("cls")
+                    continue
                 if num < 0:
                     print("Error: square root of negative number is not supported in standard mode.")
                 else:
@@ -92,7 +104,13 @@ def standard_menu():
                     time.sleep(3)
 
             elif choice == 8:
-                num = float(input("Enter number: "))
+                try:
+                    num = eval(input("Enter number: "))
+                except Exception:
+                    print("\033[91mError: Please enter a valid number.\033[0m")
+                    time.sleep(3)
+                    os.system("cls")
+                    continue
                 if num == 0:
                     print("Error: Cannot divide by zero.")
                 else:
@@ -103,15 +121,22 @@ def standard_menu():
                     time.sleep(3)
 
             elif choice == 9:
-                base = float(input("Enter base number: "))
-                percent = float(input("Enter percentage: "))
+                try:
+                    base = eval(input("Enter base number: "))
+                    percent = eval(input("Enter percentage: "))
+                except Exception:
+                    print("\033[91mError: Please enter valid numbers.\033[0m")
+                    time.sleep(3)
+                    os.system("cls")
+                    continue
                 result = base * (percent / 100)
                 print("The answer is ",result)
-                logCalc("standard","Percentage",num,result)
+                logCalc("standard","Percentage",(base,percent),result)
                 print("Result logged to history ✅")
                 time.sleep(3)
 
         except ValueError:
             print("Error: Please enter valid numbers.")
+
         
 
