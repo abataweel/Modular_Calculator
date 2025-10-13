@@ -252,7 +252,9 @@ def octal_to_others_menu():
             choise = intValidate(input(" Select an option (1-4): "))
             if choise==1:
                 octal_number = input('Enter your octal number: ')
-                return print('Decimal:',octal_to_Decimal(octal_number))
+                if octal_to_Decimal(octal_number) is not None: #stopping it from printing if it return "None". 
+                    return print('Decimal:',octal_to_Decimal(octal_number))
+                return
 
             elif choise==2:
                 octal_number = input('Enter your octal number ')
