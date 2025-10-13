@@ -113,7 +113,7 @@ def hyperpolicandInverse_menu():
                 print("Returning to scientific menu...")
                 time.sleep(2)
                 break
-        print("The answer is ",result)
+        print("The answer is ",round(result,2))
         logCalc("scientific","function",userInput,result)
         print("Result logged to history ✅")
         time.sleep(2)
@@ -150,7 +150,7 @@ def trigonometric_menu():
           time.sleep(2)
           break
 
-        print("The answer is ",result)
+        print("The answer is ",round(result,2))
         logCalc("scientific","trig",userInput,result)
         print("Result logged to history ✅")
         time.sleep(2)
