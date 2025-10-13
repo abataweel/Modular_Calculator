@@ -14,3 +14,29 @@
 5- ahmed alsobhi
 
 6- Rayan Allabban
+
+
+##Work Contribution:
+Name (percentage effort) [part of the project]
+Hamad aljedani: (%) []
+Ahmed Bataweel: (%) []
+Ibrahim bahdad: (%) []
+rayan ......: (%) []
+abdulwahab ......: (%) []
+ahmed alsobhi: (%) []
+
+## --------------------
+###Test Cases:
+####Scientific Module:
+
+
+#### Standard Module:
+
+#### Programmer Module:
+
+#### Converter Module:
+
+#### Main menu and navigation:
+
+
+
