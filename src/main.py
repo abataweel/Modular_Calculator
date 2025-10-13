@@ -1,6 +1,7 @@
 from modules import scientific, programmer, standard, converter
 from validations.dataTypes import intValidate
-import os
+from utils.calculationsHistory import logCalc
+import os,csv
 file_path = os.path.join(os.path.dirname(__file__), "utils", "history.csv") # adding history file to the path to open
 import time
 def main_menu():
@@ -37,10 +38,14 @@ def main_menu():
           converter.converter_menu()
           os.system("cls")
       if choice == 5: # choice of history of calculations
-          file_path = os.path.join(os.path.dirname(__file__), "utils", "history.csv")
+          path = os.path.join(os.path.dirname(__file__), "../history.csv")
           print("History File Opening...")
+          file_exists = os.path.exists(path)
+          if not file_exists:
+              logCalc("","","","")
+
           os.startfile(file_path)
-          time.sleep(4)
+          time.sleep(3)
           os.system("cls")
           continue
       if choice == 6:
