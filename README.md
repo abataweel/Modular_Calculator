@@ -18,17 +18,23 @@
 
 ## Work Contribution:
 Name (percentage effort) [part of the project]
+
 Hamad aljedani: (%) []
+
 Ahmed Bataweel: (%) []
+
 Ibrahim bahdad: (%) []
+
 rayan ......: (%) []
+
 abdulwahab ......: (%) []
+
 ahmed alsobhi: (%) []
 
 ## --------------------
 ### Test Cases:
-#### Scientific Module:
 
+#### Scientific Module:
 
 #### Standard Module:
 
