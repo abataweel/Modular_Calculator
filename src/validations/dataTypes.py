@@ -2,13 +2,13 @@ def floatValidate(input):
     try:
      return float(input)
     except ValueError:
-         return False
+         return None
 
 def intValidate(input):
     try:
      return int(input)
     except ValueError:
-         return False
+         return None
 
 
 def strValidate(input):

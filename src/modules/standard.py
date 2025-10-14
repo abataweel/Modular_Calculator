@@ -21,7 +21,7 @@ def standard_menu():
         
 
         choice = intValidate(input("Please Enter A Choice:"))
-        if choice is False:
+        if choice is None:
           print("\033[91mError:  Enter integer numbers only\033[0m")
           time.sleep(2)
           os.system("cls")

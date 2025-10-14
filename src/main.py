@@ -9,9 +9,9 @@ def main_menu():
     try:
      while True:
     
-      print("\033[33mWelcome to Multi-Mode CLI Calculator\033[0m\n\033[34m1.Standarrd Mode\n2.Programmer Mode\n3.Scientific Mode\n4.Converter Mode\n5.Calculations History\n6.Exit\033[0m")   
+      print("\033[33mWelcome to Multi-Mode CLI Calculator\033[0m\n\033[34m1.Standard Mode\n2.Programmer Mode\n3.Scientific Mode\n4.Converter Mode\n5.Calculations History\n6.Exit\033[0m")   
       choice = intValidate(input("Please Enter A Choice:"))
-      if not choice:
+      if choice is None:
           print("\033[91mError:  Enter integer numbers only\033[0m")
           time.sleep(3)
           os.system("cls")
