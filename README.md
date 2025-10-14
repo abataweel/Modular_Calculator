@@ -1,4 +1,4 @@
-# Modular Calculator Project
+# Modular Calculator Cli Project
 ## EE202-Team B
 
 ### Contributers:
@@ -16,7 +16,7 @@
 6- Rayan Allabban
 
 
-## Work Contribution:
+## Work distribution & Contribution:
 Name (percentage effort) [part of the project]
 
 Hamad aljedani: (%) []
@@ -45,4 +45,12 @@ ahmed alsobhi: (%) []
 #### Main menu and navigation:
 
 
+## Installation Guide
 
+1- Install this reposotory by installing .zip file or installing folder or git clone ......
+
+2- unzip Modular_Calculator folder
+
+3- run Moudular_Calculator(CLI).exe
+
+----Made by team B----
