@@ -242,9 +242,12 @@ def Trigonometric(trig_function):
             continue  
 # DONT YOU REMOVE THIS!!!
         while True:
-         try:   
-          value = eval(input("Please enter a value:"))
-         
+          
+          value = intValidate(input("Please enter a value:"))
+          if value is None:
+              print("\033[91mError: Please enter numbers only.\033[0m")
+              time.sleep(2)
+              continue
 
           if Degrees_or_radians == 'degrees' and not trig_function.startswith('a'):
               value = radians(value)
@@ -288,18 +291,12 @@ def Trigonometric(trig_function):
               if Degrees_or_radians == 'degrees':
                   return degrees(result), value
                   #######################################       
-##############################
+
               return result, value
-              
-              
           except Exception as e:
              print(f"\033[91mUnexpected error: {e}\033[0m")
              time.sleep(2)
              return None, None
-         except ValueError:
-             print("\033[91mError: Enter integer numbers only\033[0m")
-             time.sleep(2)
-             continue
 
 
 def factorial_function(n):

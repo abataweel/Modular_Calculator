@@ -3,327 +3,471 @@ Programmer Calculator Module
 Handles base conversions and bitwise operations
 
 """
+from validations.dataTypes import intValidate,strValidate,floatValidate
+from utils.calculationsHistory import logCalc
 import os,time,sys
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from validations.dataTypes import intValidate
 
 def programmer_menu():
     """Main menu for programmer calculator mode"""
     while True:
-        os.system('cls')
-        print("\033[33mProgrammer Mode:\033[0m")
-        print("\033[34m1. Base Conversion\033[0m")
-        print("\033[34m2. Bitwise Operations\033[0m")
-        print("\033[34m3. Back to Main Menu\033[0m")
-        try:
+            os.system('cls')
+            print("\033[33mProgrammer Mode:\033[0m")
+            print("\033[34m1. Base Conversion\033[0m")
+            print("\033[34m2. Bitwise Operations\033[0m")
+            print("\033[34m3. Back to Main Menu\033[0m")
+        
             choice = intValidate(input("Select an option (1-3): "))
+            if choice is None:
+                print("\033[91mError: Please enter letters only.\033[0m")
+                time.sleep(2)
+                continue
+            elif choice <1 or choice>3:
+                   print("\033[91mError:Select A number within the menu range\033[0m")
+                   time.sleep(2)
+                   continue
             if choice == 1:
                 base_conversions_menu()
-                time.sleep(3)
             elif choice == 2:
-                result = bitwise_operations_menu()
-                if result is not None:    
-                    print(result)
-                time.sleep(3)
+                 bitwise_operations_menu()
+                 
             elif choice == 3:
                 print("Returning to Main Menu...")
-                os.system('cls')
-                time.sleep(3)
-            else:
-                print("Invalid choice. Please select a number between 1 and 3.")
-                time.sleep(3)
-                continue
-        except KeyboardInterrupt:
-            print("Exiting to Main Menu.")
-            return
-        except TypeError:
-            print("Invalid input. Please enter a valid number.")
-            time.sleep(3)
-            break
-
-
+                time.sleep(1.5)
+                break
         
 
+        
+""" Handles base conversions between Binary, Decimal, Hexadecimal, and Octal """
 def base_conversions_menu():
-    """ Handles base conversions between Binary, Decimal, Hexadecimal, and Octal """
-    os.system('cls')
-    print("\033[33mBase Conversion Mode:\033[0m")
-    print("\033[34m1. Convert from binary\033[0m")
-    print("\033[34m2. Convert from decimal\033[0m")
-    print("\033[34m3. Convert from octal\033[0m")
-    print("\033[34m4. Convert from hexadecimal\033[0m")
-    print("\033[34m5. Back to Programmer Menu\033[0m")
     while True:
-        try:
+        
+            os.system('cls')
+            print("\033[33mBase Conversion Mode:\033[0m")
+            print("\033[34m1. Convert from binary\033[0m")
+            print("\033[34m2. Convert from decimal\033[0m")
+            print("\033[34m3. Convert from octal\033[0m")
+            print("\033[34m4. Convert from hexadecimal\033[0m")
+            print("\033[34m5. Back to Programmer Menu\033[0m")
+     
             choice=intValidate(input("Select an option (1-5): "))
+            if choice is None:
+                print("\033[91mError: Please enter letters only.\033[0m")
+                time.sleep(2)
+                continue
+            elif choice <1 or choice>5:
+                   print("\033[91mError:Select A number within the menu range\033[0m")
+                   time.sleep(2)
+                   continue
             if choice == 1:
-                return binary_to_others_menu()
+                 binary_to_others_menu()
             
             elif choice == 2:
-                return decimal_to_others_menu()
+                 decimal_to_others_menu()
             
             elif choice == 3:
-                return octal_to_others_menu()
+                 octal_to_others_menu()
             
             elif choice == 4:
-                return hexadecimal_to_others_menu()
+                 hexadecimal_to_others_menu()
             
             elif choice == 5:
-                print("Returning to Programmer Menu...")
-                return programmer_menu()
-            else:
-                print("Invalid input. Please enter a number between 1 and 5.")
-            
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 5.")
-            continue
-        except KeyboardInterrupt:
-            print("Exiting to Programmer Menu.")
-            return
-        except TypeError:
-            print("Invalid input. Please enter a valid number.")
-            return
-        
+                print("Returning to programmer menu...")
+                time.sleep(1.5)
+                break
+           
+       
     
 
 def bitwise_operations_menu():
     """Handles bitwise operations: AND, OR, XOR, NOT, Left Shift, Right Shift"""
-    os.system('cls')
-    print("\033[33mBitwise Operations Menu:\033[0m")
-    print("\033[34m1. AND\033[0m")
-    print("\033[34m2. OR\033[0m")
-    print("\033[34m3. XOR\033[0m")
-    print("\033[34m4. NOT\033[0m")
-    print("\033[34m5. Left Shift\033[0m")
-    print("\033[34m6. Right Shift\033[0m")
-    print("\033[34m7. Back to Programmer Menu\033[0m")
-    
     while True:
-
-        try:
-            print("="*30)
+            os.system('cls')
+            print("\033[33mBitwise Operations Menu:\033[0m")
+            print("\033[34m1. AND\033[0m")
+            print("\033[34m2. OR\033[0m")
+            print("\033[34m3. XOR\033[0m")
+            print("\033[34m4. NOT\033[0m")
+            print("\033[34m5. Left Shift\033[0m")
+            print("\033[34m6. Right Shift\033[0m")
+            print("\033[34m7. Back to Programmer Menu\033[0m")
             choice = intValidate(input("Select an option (1-7): "))
+            if choice is None:
+                 print("\033[91mError: Please enter letters only.\033[0m")
+                 time.sleep(2)
+                 continue
+            elif choice <1 or choice>7:
+                    print("\033[91mError:Select A number within the menu range\033[0m")
+                    time.sleep(2)
+                    continue
+            BinValid = [1,0]
             if choice == 1:
-                a = int(input("Enter first integer: "))
-                b = int(input("Enter second integer: "))
-                return f"{a} & {b} = {a & b}"
+                while True:
+                 a = intValidate(input("Enter first integer: "))
+                 b = intValidate(input("Enter second integer: "))
+                 if a is None or b is None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if a or b not in BinValid:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = a & b
+                 print(f"The result of {a} & {b} is {result}")
+                 logCalc("Programmer","AND",f"{a},{b}",result)
+                 break
             
             elif choice == 2:
-                a = int(input("Enter first integer: "))
-                b = int(input("Enter second integer: "))
-                return f"{a} | {b} = {a | b}"
+                while True:
+                 a = intValidate(input("Enter first integer: "))
+                 b = intValidate(input("Enter second integer: "))
+                 if a is None or b is None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if a or b not in BinValid:
+                #       print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #       time.sleep(2)
+                #       continue
+                 result = a | b
+                 print(f"The result of {a} & {b} is {result}")
+                 logCalc("Programmer","OR",f"{a},{b}",result)
+                 break
             
             elif choice == 3:
-                a = int(input("Enter first integer: "))
-                b = int(input("Enter second integer: "))
-                return f"{a} ^ {b} = {a ^ b}"
+                while True:
+                 a = intValidate(input("Enter first integer: "))
+                 b = intValidate(input("Enter second integer: "))
+                 if a is None or b is None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if a or b not in BinValid:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = a & b
+                 print(f"The result of {a} XOR ^ {b} is {result}")
+                 logCalc("Programmer","XOR",f"{a},{b}",result)
+                 break
             
             elif choice == 4:
-                a = int(input("Enter an integer: "))
-                return f"~{a} = {~a}"
+                while True:
+                 a = intValidate(input("Enter first integer: "))
+                 if a is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if a or b not in BinValid:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = ~a
+                 print(f"The result of {a} ~ NOT {b} is {result}")
+                 logCalc("Programmer","NOT",a,result)
+                 break
             
             elif choice == 5:
-                a = int(input("Enter an integer: "))
-                n = int(input("Enter number of positions to shift left: "))
-                return f"{a} << {n} = {a << n}"
+                while True:
+                 a = intValidate(input("Enter an integer: "))
+                 n = intValidate(input("Enter number of posistions to shift left"))
+                 if a  or b is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if a  not in BinValid:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = a <<n
+                 print(f"The result of {a} << let shift {n} positions is {result}")
+                 logCalc("Programmer","LEFT SHIFT",a,result)
+                 break
             
             elif choice == 6:
-                a = int(input("Enter an integer: "))
-                n = int(input("Enter number of positions to shift right: "))
-                return f"{a} >> {n} = {a >> n}"
+                while True:
+                 a = intValidate(input("Enter an integer: "))
+                 n = intValidate(input("Enter number of posistions to shift right"))
+                 if a  or b is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if a  not in BinValid:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = a <<n
+                 print(f"The result of {a} << let shift {n} positions is {result}")
+                 logCalc("Programmer","LEFT SHIFT",a,result)
+                 break
             
             elif choice == 7:
                 print("Returning to Programmer Menu...")
-                return programmer_menu()
+                time.sleep(2)
+                break
+                  
             
-            else:
-                print("Invalid choice. Please select a number between 1 and 7.")
-                continue
-
-        except ValueError:
-            print("Invalid input. Please enter valid integers and options.")
-            continue
-        except KeyboardInterrupt:
-            print("Exiting to Programmer Menu.")
-            return
-        except TypeError:
-            print("Invalid input. Please enter valid integers and options.")
-            return
-
 
 
 def binary_to_others_menu():
     """ Converts Binary to Decimal, Hexadecimal, and Octal """
-    os.system('cls')
-    print("\033[33mBinary Conversion Menu:\033[0m")
-    print("\033[34m1. Binary to Decimal")
-    print("\033[34m2. Binary to Octal")
-    print("\033[34m3. Binary to Hexadecimal")
-    print("\033[34m4. Back to Base Conversion Menu")
     while True:
-        try:
-            print("="*30)
+            os.system('cls')
+            print("\033[33mBinary Conversion Menu:\033[0m")
+            print("\033[34m1. Binary to Decimal")
+            print("\033[34m2. Binary to Octal")
+            print("\033[34m3. Binary to Hexadecimal")
+            print("\033[34m4. Back to Base Conversion Menu\033[0m")
+    
             choice = intValidate(input("Select an option (1-4): "))
+            if choice is None:     
+                 print("\033[91mError: Please enter letters only.\033[0m")
+                 time.sleep(2)
+                 continue
+            elif choice <1 or choice>4:
+                   print("\033[91mError:Select A number within the menu range\033[0m")
+                   time.sleep(2)
+                   continue
             if choice == 1:
-                binaryNumberUser = int(input("Enter a Binary number: "))
-                return print("Decimal:", binary_to_decimal(binaryNumberUser))
+               while True: 
+                 binaryNumberUser = intValidate(input("Enter a Binary number: "))
+               
+                 if binaryNumberUser is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if binaryNumberUser not in [1,0]:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = binary_to_decimal(binaryNumberUser)
+                 print(f"The result of {binary_to_decimal} number to decimal is  {result}")
+                 logCalc("Programmer","Bin>Dec",binaryNumberUser,result)
+                 time.sleep(3)
+                 break
 
             elif choice == 2:
-                binaryNumberUser = int(input("Enter a Binary number: "))
-                return print("Octal:", binary_to_octal(binaryNumberUser))
+                while True: 
+                 binaryNumberUser = intValidate(input("Enter a Binary number: "))
+               
+                 if binaryNumberUser is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if binaryNumberUser not in [1,0]:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = binary_to_octal(binaryNumberUser)
+                 print(f"The result of {binary_to_decimal} number to octal is  {result}")
+                 logCalc("Programmer","Bin>Oct",binaryNumberUser,result)
+                 time.sleep(3)
+                 break
             
             elif choice == 3:
-                binaryNumberUser = int(input("Enter a Binary number: "))
-                return print("Hexadecimal:", binary_to_hexadecimal(binaryNumberUser))
+               while True: 
+                 binaryNumberUser = intValidate(input("Enter a Binary number: "))
+               
+                 if binaryNumberUser is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                #  if binaryNumberUser not in [1,0]:
+                #      print("\033[91mError: Please binary numbers only (0,1)\033[0m")
+                #      time.sleep(2)
+                #      continue
+                 result = binary_to_hexadecimal(binaryNumberUser)
+                 print(f"The result of {binary_to_decimal} number to hexadecimal is {result}")
+                 logCalc("Programmer","Bin>Hex",binaryNumberUser,result)
+                 time.sleep(3)
+                 break
 
             elif choice == 4:
-                print("Returning to Base Conversion Menu...")
-                return base_conversions_menu()
-            else:
-                print("Invalid input. Please enter a number between 1 and 4.")
-                continue
+                  print("Returning to Base Conversion Menu...")
+                  time.sleep(2)
+                  break
+              
             
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 4.")
-            continue
-        except KeyboardInterrupt:
-            print("Exiting to Base Conversion Menu.")
-            return
-        except TypeError:
-            print("Invalid input. Please enter a valid binary number.")
-            return
-
-
+    """ Converts Decimal to Binary, Hexadecimal, and Octal """
 
 def decimal_to_others_menu():
-    """ Converts Decimal to Binary, Hexadecimal, and Octal """
-    os.system('cls')
-    print("\033[33mDecimal Conversion Menu:\033[0m")
-    print("\033[34m1. Decimal to Binary\033[0m")
-    print("\033[34m2. Decimal to Octal\033[0m")
-    print("\033[34m3. Decimal to Hexadecimal\033[0m")
-    print("\033[34m4. Back to Base Conversion Menu\033[0m")
-    while True:
-        try:
+   while True:
+            os.system('cls')
+            print("\033[33mDecimal Conversion Menu:\033[0m")
+            print("\033[34m1. Decimal to Binary\033[0m")
+            print("\033[34m2. Decimal to Octal\033[0m")
+            print("\033[34m3. Decimal to Hexadecimal\033[0m")
+            print("\033[34m4. Back to Base Conversion Menu\033[0m")
+    
+        
             choice=intValidate(input("Select an option (1-4): "))
+            if choice is None:    
+                 print("\033[91mError: Please enter letters only.\033[0m")
+                 time.sleep(2)
+                 continue
+            elif choice <1 or choice>4:
+                   print("\033[91mError:Select A number within the menu range\033[0m")
+                   time.sleep(2)
+                   continue
             if choice == 1:
-                decimalNumberUser=int(input("Enter a Decimal number: "))
-                return print("Binary:",decimal_to_binary(decimalNumberUser))
+                while True: 
+                 decimalNumberUser = intValidate(input("Enter a decimal number: "))
+                 if decimalNumberUser is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                 result = decimal_to_binary(decimalNumberUser)
+                 print(f"The result of {decimalNumberUser} number to Binary is {result}")
+                 logCalc("Programmer","Dec>Bin",decimalNumberUser,result)
+                 time.sleep(3)
+                 break
+            
+            elif choice == 2:
+                while True: 
+                 decimalNumberUser = intValidate(input("Enter a decimal number: "))
+                 if decimalNumberUser is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                 result = decimal_to_octal(decimalNumberUser)
+                 print(f"The result of {decimalNumberUser} number to octal is {result}")
+                 logCalc("Programmer","Dec>Oct",decimalNumberUser,result)
+                 time.sleep(3)
+                 break
             
             elif choice == 3:
-                decimalNumberUser=int(input("Enter a Decimal number: "))
-                return print("Octal:",decimal_to_octal(decimalNumberUser))
-            
-            elif choice == 3:
-                """Convert decimal to hexadecimal"""
-                decimalNumberUser=int(input("Enter a Decimal number: "))
-                return print("Hexadecimal:",decimal_to_hexadecimal(decimalNumberUser)) 
+               while True: 
+                 decimalNumberUser = intValidate(input("Enter a decimal number: "))
+                 if decimalNumberUser is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                 result = decimal_to_hexadecimal(decimalNumberUser)
+                 print(f"The result of {decimalNumberUser} number to hexadecimal is {result}")
+                 logCalc("Programmer","Dec>Hex",decimalNumberUser,result)
+                 time.sleep(3)
+                 break
             
             elif choice == 4:
-                print("Returning to Base Conversion Menu...")
-                return base_conversions_menu()
-            else:
-                print("Invalid input. Please enter a number between 1 and 4.")
-                continue
-            
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 4.")
-            continue
-        except KeyboardInterrupt:
-            print("Exiting to Base Conversion Menu.")
-            return
-        except TypeError:
-            print("Invalid input. Please enter a valid decimal number.")
-            return
-
-
+                  print("Returning to Base Conversion Menu...")
+                  time.sleep(2)
+                  break
+        
+""" Converts Octal to Decimal,Binary and Hexadecimal """
 
 def octal_to_others_menu():
-    """ Converts Octal to Decimal,Binary and Hexadecimal """
-    os.system('cls')
-    print("\033[33mOctal Conversion Menu:\033[0m")
-    print("\033[34m1. Octal to Decimal\033[0m")
-    print("\033[34m2. Octal to Hexadecimal\033[0m")
-    print("\033[34m3. Octal to Binary\033[0m")
-    print("\033[34m4. Back to Base Conversion Menu\033[0m")
-
-    while True :
-        try:
+   while True:
+            os.system('cls')
+            print("\033[33mOctal Conversion Menu:\033[0m")
+            print("\033[34m1. Octal to Decimal\033[0m")
+            print("\033[34m2. Octal to Hexadecimal\033[0m")
+            print("\033[34m3. Octal to Binary\033[0m")
+            print("\033[34m4. Back to Base Conversion Menu\033[0m")
             choise = intValidate(input(" Select an option (1-4): "))
+            if choise is None:    
+                 print("\033[91mError: Please enter letters only.\033[0m")
+                 time.sleep(2)
+                 continue
+            elif choise <1 or choise>4:
+                   print("\033[91mError:Select A number within the menu range\033[0m")
+                   time.sleep(2)
+                   continue
             if choise==1:
-                octal_number = input('Enter your octal number: ')
-                if octal_to_Decimal(octal_number) is not None: #stopping it from printing if it return "None". 
-                    return print('Decimal:',octal_to_Decimal(octal_number))
-                return
+               while True: 
+                 octalNumber = intValidate(input("Enter a octal number: "))
+                 if octalNumber is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                 result = octal_to_Decimal(octalNumber)
+                 print(f"The result of {octalNumber} number to decimal is {result}")
+                 logCalc("Programmer","Oct>Dec",octalNumber,result)
+                 time.sleep(3)
+                 break
+            
 
             elif choise==2:
-                octal_number = input('Enter your octal number ')
-                return octal_to_hexadecimal(octal_number)
+                while True: 
+                 octalNumber = intValidate(input("Enter a octal number: "))
+                 if octalNumber is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                 result = octal_to_hexadecimal(octalNumber)
+                 print(f"The result of {octalNumber} number to hexadecimal is {result}")
+                 logCalc("Programmer","Oct>Hex",octalNumber,result)
+                 time.sleep(3)
+                 break
+            
             elif choise==3:
-                octal_number = input('Enter your octal number ')
-                return octal_to_binary(octal_number)
+                while True: 
+                 octalNumber = intValidate(input("Enter a octal number: "))
+                 if octalNumber is  None:
+                     print("\033[91mError: Please enter numbers only.\033[0m")
+                     time.sleep(2)
+                     continue
+                 result = octal_to_binary(octalNumber)
+                 print(f"The result of {octalNumber} number to binary is {result}")
+                 logCalc("Programmer","Oct>Bin",octalNumber,result)
+                 time.sleep(3)
+                 break
+            
 
             elif choise==4:
-                print("Returning to Base Conversion Menu...")
-                os.system('cls')
-                break
-            else:
-                print("Invalid input. Please enter a number between 1 and 4.")
-                continue
+                  print("Returning to Base Conversion Menu...")
+                  time.sleep(2)
+                  break
             
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 4.")
-            continue
-        except KeyboardInterrupt:
-             print("Exiting to Base Conversion Menu.")
-             return    
-        except TypeError:
-             print("Invalid input. Please enter a valid octal number.")
-             return
 
-
+""" Converts Hexadecimal to Binary, Decimal and Octal """
 def hexadecimal_to_others_menu():
-    """ Converts Hexadecimal to Binary, Decimal and Octal """
-    os.system('cls')
-    print("\033[33mHexadecimal Conversion Menu:\033[0m")
-    print("\033[34m1. Hexadecimal to Decimal\033[0m")
-    print("\033[34m2. Hexadecimal to Binary\033[0m")
-    print("\033[34m3. Hexadecimal to Octal\033[0m")
-    print("\033[34m4. Back to Main Menu\033[0m")
-    while True:
-        try:
+   while True:
+            os.system('cls')
+            print("\033[33mHexadecimal Conversion Menu:\033[0m")
+            print("\033[34m1. Hexadecimal to Decimal\033[0m")
+            print("\033[34m2. Hexadecimal to Binary\033[0m")
+            print("\033[34m3. Hexadecimal to Octal\033[0m")
+            print("\033[34m4. Back to Main Menu\033[0m")    
             choice = intValidate(input("Select an option (1-4): "))
+            if choice is None:    
+                 print("\033[91mError: Please enter letters only.\033[0m")
+                 time.sleep(2)
+                 continue
+            elif choice <1 or choice>4:
+                   print("\033[91mError:Select A number within the menu range\033[0m")
+                   time.sleep(2)
+                   continue
             if choice==1:
                 hex_string = input("Enter a hexadecimal number: ").upper()
                 if hexadecimal_to_decimal(hex_string) is not None:
-                    return print('Hexadecimal:',hexadecimal_to_decimal(hex_string))
-                return
+                    result = hexadecimal_to_decimal(hex_string)
+                    print(f"The result of {hex_string}  to decimal is {result}")
+                    logCalc("Programmer","Hex>Dec",hex_string,result)
+                    time.sleep(3)
+                
             elif choice==2:
                 hex_string = input("Enter a hexadecimal number: ").upper()
-                return hexadecimal_to_binary(hex_string)
+                if hexadecimal_to_binary(hex_string) is not None:
+                    result = hexadecimal_to_binary(hex_string)
+                    print(f"The result of {hex_string}  to binary is {result}")
+                    logCalc("Programmer","Hex>Bin",hex_string,result)
+                    time.sleep(3)
 
             elif choice==3:
                 hex_string = input("Enter a hexadecimal number: ").upper()
-                return hexadecimal_to_octal(hex_string)
+                if hexadecimal_to_octal(hex_string) is not None:
+                    result = hexadecimal_to_octal(hex_string)
+                    print(f"The result of {hex_string}  to octal is {result}")
+                    logCalc("Programmer","Hex>Oct",hex_string,result)
+                    time.sleep(3)
 
             elif choice==4:
                 print("Returning to Base Conversion Menu...")
-                return base_conversions_menu()
-            else:
-                print("Invalid input. Please enter a number between 1 and 4.")
-                continue
-            
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 4.")
-            continue
-        except KeyboardInterrupt:
-             print("Exiting to Base Conversion Menu.")
-             return   
-        except TypeError:
-             print("Invalid input. Please enter a valid hexadecimal number.")
-             return   
-
+                time.sleep(2)
+                break
+             
 
 
 def binary_to_decimal(binaryNumberUser):
