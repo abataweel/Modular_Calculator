@@ -10,7 +10,6 @@ from validations.dataTypes import intValidate
 
 def programmer_menu():
     """Main menu for programmer calculator mode"""
-
     while True:
         os.system('cls')
         print("\033[33mProgrammer Mode:\033[0m")
@@ -24,7 +23,8 @@ def programmer_menu():
                 time.sleep(3)
             elif choice == 2:
                 result = bitwise_operations_menu()
-                print(result)
+                if result is not None:    
+                    print(result)
                 time.sleep(3)
             elif choice == 3:
                 print("Returning to Main Menu...")
@@ -47,18 +47,15 @@ def programmer_menu():
 
 def base_conversions_menu():
     """ Handles base conversions between Binary, Decimal, Hexadecimal, and Octal """
-
-
+    os.system('cls')
+    print("\033[33mBase Conversion Mode:\033[0m")
+    print("\033[34m1. Convert from binary\033[0m")
+    print("\033[34m2. Convert from decimal\033[0m")
+    print("\033[34m3. Convert from octal\033[0m")
+    print("\033[34m4. Convert from hexadecimal\033[0m")
+    print("\033[34m5. Back to Programmer Menu\033[0m")
     while True:
-        os.system('cls')
-        print("\033[33mBase Conversion Mode:\033[0m")
-        print("\033[34m1. Convert from binary\033[0m")
-        print("\033[34m2. Convert from decimal\033[0m")
-        print("\033[34m3. Convert from octal\033[0m")
-        print("\033[34m4. Convert from hexadecimal\033[0m")
-        print("\033[34m5. Back to Programmer Menu\033[0m")
         try:
-            
             choice=intValidate(input("Select an option (1-5): "))
             if choice == 1:
                 return binary_to_others_menu()
@@ -75,6 +72,8 @@ def base_conversions_menu():
             elif choice == 5:
                 print("Returning to Programmer Menu...")
                 return programmer_menu()
+            else:
+                print("Invalid input. Please enter a number between 1 and 5.")
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 5.")
@@ -90,18 +89,17 @@ def base_conversions_menu():
 
 def bitwise_operations_menu():
     """Handles bitwise operations: AND, OR, XOR, NOT, Left Shift, Right Shift"""
-
+    os.system('cls')
+    print("\033[33mBitwise Operations Menu:\033[0m")
+    print("\033[34m1. AND\033[0m")
+    print("\033[34m2. OR\033[0m")
+    print("\033[34m3. XOR\033[0m")
+    print("\033[34m4. NOT\033[0m")
+    print("\033[34m5. Left Shift\033[0m")
+    print("\033[34m6. Right Shift\033[0m")
+    print("\033[34m7. Back to Programmer Menu\033[0m")
     
     while True:
-        os.system('cls')
-        print("\033[33mBitwise Operations Menu:\033[0m")
-        print("\033[34m1. AND\033[0m")
-        print("\033[34m2. OR\033[0m")
-        print("\033[34m3. XOR\033[0m")
-        print("\033[34m4. NOT\033[0m")
-        print("\033[34m5. Left Shift\033[0m")
-        print("\033[34m6. Right Shift\033[0m")
-        print("\033[34m7. Back to Programmer Menu\033[0m")
 
         try:
             print("="*30)
@@ -157,14 +155,13 @@ def bitwise_operations_menu():
 
 def binary_to_others_menu():
     """ Converts Binary to Decimal, Hexadecimal, and Octal """
-
+    os.system('cls')
+    print("\033[33mBinary Conversion Menu:\033[0m")
+    print("\033[34m1. Binary to Decimal")
+    print("\033[34m2. Binary to Octal")
+    print("\033[34m3. Binary to Hexadecimal")
+    print("\033[34m4. Back to Base Conversion Menu")
     while True:
-        os.system('cls')
-        print("\033[33mBinary Conversion Menu:\033[0m")
-        print("\033[34m1. Binary to Decimal")
-        print("\033[34m2. Binary to Octal")
-        print("\033[34m3. Binary to Hexadecimal")
-        print("\033[34m4. Back to Base Conversion Menu")
         try:
             print("="*30)
             choice = intValidate(input("Select an option (1-4): "))
@@ -183,6 +180,9 @@ def binary_to_others_menu():
             elif choice == 4:
                 print("Returning to Base Conversion Menu...")
                 return base_conversions_menu()
+            else:
+                print("Invalid input. Please enter a number between 1 and 4.")
+                continue
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 4.")
@@ -198,15 +198,13 @@ def binary_to_others_menu():
 
 def decimal_to_others_menu():
     """ Converts Decimal to Binary, Hexadecimal, and Octal """
-    
+    os.system('cls')
+    print("\033[33mDecimal Conversion Menu:\033[0m")
+    print("\033[34m1. Decimal to Binary\033[0m")
+    print("\033[34m2. Decimal to Octal\033[0m")
+    print("\033[34m3. Decimal to Hexadecimal\033[0m")
+    print("\033[34m4. Back to Base Conversion Menu\033[0m")
     while True:
-        os.system('cls')
-        print("\033[33mDecimal Conversion Menu:\033[0m")
-        print("\033[34m1. Decimal to Binary\033[0m")
-        print("\033[34m2. Decimal to Octal\033[0m")
-        print("\033[34m3. Decimal to Hexadecimal\033[0m")
-        print("\033[34m4. Back to Base Conversion Menu\033[0m")
-
         try:
             choice=intValidate(input("Select an option (1-4): "))
             if choice == 1:
@@ -225,6 +223,9 @@ def decimal_to_others_menu():
             elif choice == 4:
                 print("Returning to Base Conversion Menu...")
                 return base_conversions_menu()
+            else:
+                print("Invalid input. Please enter a number between 1 and 4.")
+                continue
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 4.")
@@ -265,7 +266,11 @@ def octal_to_others_menu():
 
             elif choise==4:
                 print("Returning to Base Conversion Menu...")
+                os.system('cls')
                 break
+            else:
+                print("Invalid input. Please enter a number between 1 and 4.")
+                continue
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 4.")
@@ -280,14 +285,13 @@ def octal_to_others_menu():
 
 def hexadecimal_to_others_menu():
     """ Converts Hexadecimal to Binary, Decimal and Octal """
-
+    os.system('cls')
+    print("\033[33mHexadecimal Conversion Menu:\033[0m")
+    print("\033[34m1. Hexadecimal to Decimal\033[0m")
+    print("\033[34m2. Hexadecimal to Binary\033[0m")
+    print("\033[34m3. Hexadecimal to Octal\033[0m")
+    print("\033[34m4. Back to Main Menu\033[0m")
     while True:
-        os.system('cls')
-        print("\033[33mHexadecimal Conversion Menu:\033[0m")
-        print("\033[34m1. Hexadecimal to Decimal\033[0m")
-        print("\033[34m2. Hexadecimal to Binary\033[0m")
-        print("\033[34m3. Hexadecimal to Octal\033[0m")
-        print("\033[34m4. Back to Main Menu\033[0m")
         try:
             choice = intValidate(input("Select an option (1-4): "))
             if choice==1:
@@ -306,6 +310,9 @@ def hexadecimal_to_others_menu():
             elif choice==4:
                 print("Returning to Base Conversion Menu...")
                 return base_conversions_menu()
+            else:
+                print("Invalid input. Please enter a number between 1 and 4.")
+                continue
             
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 4.")
