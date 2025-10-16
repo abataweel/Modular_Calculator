@@ -1,29 +1,35 @@
-"""history, structure may be like
-
--- date and time / module / specific calucaltion / input /  result
-
 """
-import csv
+History structure:
+date/time / module / function / input / result
+"""
+
 import os
+import sys
+import csv
 from datetime import datetime
 
-FILENAME = "./src/utils/history.csv"
+# Find the folder of the exe or script
+if getattr(sys, 'frozen', False):  # running as .exe
+    base_folder = os.path.dirname(sys.executable)
+else:  # running as .py
+    base_folder = os.path.dirname(os.path.abspath(__file__))
 
-def logCalc(module,function,input,result):
+# Path to CSV inside src/utils
+FOLDER = os.path.join(base_folder, "src", "utils")
+os.makedirs(FOLDER, exist_ok=True)  # create folder if missing
+
+FILENAME = os.path.join(FOLDER, "history.csv")
+
+def logCalc(module, function, input, result):
     try:
-     FILENAME = os.path.join(os.path.dirname(__file__), "history.csv")
-
-     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-     file_exists = os.path.exists(FILENAME)
-     with open(FILENAME, mode="a", newline="") as file:
-         writer = csv.writer(file)
-         if not file_exists:
-             writer = csv.writer(file)
-             writer.writerow(["Date","Module","Function","input","result"])
-         writer.writerow([date, str(module), str(function),input,result])
+        date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        file_exists = os.path.exists(FILENAME)
+        with open(FILENAME, mode="a", newline="") as file:
+            writer = csv.writer(file)
+            if not file_exists:
+                writer.writerow(["Date", "Module", "Function", "Input", "Result"])
+            writer.writerow([date, str(module), str(function), input, result])
     except PermissionError:
-        print("\033[91mNo permission for writing, please close the excel file\033[0m")
+        print("No permission for writing, please close the excel file")
     except FileNotFoundError:
-        print("\033[91mError:History file not found, new file created...\033[0m")
-        
-        
+        print("Error: History file not found, new file created...")

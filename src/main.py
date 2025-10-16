@@ -38,7 +38,7 @@ def main_menu():
           converter.converter_menu()
           os.system("cls")
       if choice == 5: # choice of history of calculations
-          path = os.path.join(os.path.dirname(__file__), "../history.csv")
+          path = os.path.join(os.path.dirname(__file__), "./utils/history.csv")
           print("History File Opening...")
           file_exists = os.path.exists(path)
           if not file_exists:
@@ -46,7 +46,7 @@ def main_menu():
 
           os.startfile(file_path)
           time.sleep(3)
-          os.system("cls")
+           
           continue
       if choice == 6:
           print("Thanks for using Multi-Mode CLI calculator\n Program exit...")
