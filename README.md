@@ -5,7 +5,7 @@
 
 1-Ahmed Bataweel
 
-2- abdulwahab ......
+2- abdulwahab aldrobi
 
 3- hamad aljedani
 
@@ -19,17 +19,17 @@
 ## Work distribution & Contribution:
 Name (percentage effort) [part of the project]
 
-Hamad aljedani: (%) []
+Hamad aljedani: (%16.6) [programmre module]
 
-Ahmed Bataweel: (%) []
+Ahmed Bataweel: (%16.6) [main menu, sub menus & navigation, colored output and input, modules integration and log history function]
 
-Ibrahim bahdad: (%) []
+Ibrahim bahdad: (%16.6) [scientific module]
 
-rayan ......: (%) []
+rayan : (%16.6) [standard module & error handeling for scientific]
 
-abdulwahab ......: (%) []
+abdulwahab : (%16.6) [converter module]
 
-ahmed alsobhi: (%) []
+ahmed alsobhi: (%16.6) [programmer module]
 
 ## --------------------
 ### Test Cases:
