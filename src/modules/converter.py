@@ -16,18 +16,17 @@ def converter_menu():
         print("\033[34m1.Length")
         print("2.Weight")
         print("3.Temperature")
-        print("4.Volume (optional)")
-        print("5.Back/Exit\033[0m")
+        print("4.Back/Exit\033[0m")
         choice = intValidate(input("Please Enter A Choice:"))
         if choice is None:
             print("\033[91mError: Enter integer numbers only\033[0m")
             time.sleep(2)
             continue
-        elif choice < 1 or choice > 5:
+        elif choice < 1 or choice > 4:
             print("\033[91mError: Select A number within the menu range\033[0m")
             time.sleep(2)
             continue  
-        if choice == 5:
+        if choice == 4:
             print("Returning to main menu...")
             time.sleep(2)
             break
